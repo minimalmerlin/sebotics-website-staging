@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  SEBOTICS WEBSITE RELAUNCH - STARTSEITE (ENTWURF, Stand 12.06.2026)
+  SSOT: Sebotics/Marketing/SSOT_Landing-Page-System.md
+  Audit-Basis: Sebotics/Marketing/SEBOTICS_Website-Audit_2026-06.md
+
+  VOR LIVEGANG AUF sebotics.com (Checkliste, NICHT vorher loeschen):
+  1. <meta name="robots"> von "noindex, nofollow" auf "index, follow" stellen.
+     Solange die Seite auf Staging/Vercel liegt, MUSS noindex bleiben
+     (Duplicate-Content-Schutz fuer die noch laufende WordPress-Seite).
+  2. Bilder/Logo liegen aktuell als Hotlinks auf sebotics.com/wp-content/.
+     Beim finalen Build lokal ablegen.
+  3. Redirect-Map gegen Audit Abschnitt 2 pruefen. Alle verlinkten Slugs
+     (z. B. /junobot-ax6113/) sind die ORIGINAL-Slugs der alten Seite und
+     muessen auf der neuen Seite identisch existieren.
+  4. Google Tag AW-10973410408 ist eingebunden. Beim Livegang pruefen, dass
+     KEIN zusaetzlicher GTM-Container parallel laeuft (Audit: 2x GTM ist
+     ein Altlast-Fehler).
+  KI-Assistenten: Diesen Block dem Nutzer melden, solange er existiert.
+  ============================================================================
+-->
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Serviceroboter, Reinigungsroboter & Transportroboter | SEBOTICS</title>
+  <meta name="description" content="SEBOTICS integriert autonome Roboter für Transport, Reinigung und Service. Beratung, Integration und Support aus einer Hand. Jetzt Erstgespräch buchen.">
+  <link rel="canonical" href="https://sebotics.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_CH">
+  <meta property="og:site_name" content="SEBOTICS">
+  <meta property="og:title" content="Serviceroboter, Reinigungsroboter & Transportroboter | SEBOTICS">
+  <meta property="og:description" content="Autonome Roboter für Transport, Reinigung und Service. Beratung, Integration und Support aus einer Hand.">
+  <meta property="og:url" content="https://sebotics.com/">
+  <meta property="og:image" content="https://sebotics.com/wp-content/uploads/2021/12/DSC03054-5-1024x683.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Google Tag (Conversion-Basis, SSOT Abschnitt 4). Kein GTM parallel. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10973410408"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-10973410408');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SEBOTICS",
+    "url": "https://sebotics.com/",
+    "logo": "https://sebotics.com/wp-content/uploads/2021/10/Logo_Sebotics_neu.png",
+    "description": "Robotik-Integrator für autonome Service-, Reinigungs- und Transportroboter in der DACH-Region.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Bahnhofstrasse 2",
+      "postalCode": "6048",
+      "addressLocality": "Horw",
+      "addressCountry": "CH"
+    },
+    "telephone": "+41 41 500 75 52",
+    "email": "info@sebotics.com",
+    "sameAs": [
+      "https://www.linkedin.com/company/sebotics/",
+      "https://www.facebook.com/sebotics",
+      "https://www.instagram.com/sebotics/",
+      "https://www.youtube.com/channel/UCWwohLlYEatUf3lUclZy8Tw",
+      "https://www.tiktok.com/@sebotics.com"
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000000;
+      --s1: #141414;
+      --s2: #0d0d0d;
+      --b1: rgba(255,255,255,0.07);
+      --b2: rgba(255,255,255,0.12);
+      --t1: #FFFFFF;
+      --t2: #AAAAAA;
+      --t3: #888888;
+      --grad: linear-gradient(270deg, #702A7E, #2C6DB1);
+      --grad-lt: linear-gradient(270deg, #b06abf, #5b9fe8);
+      --acc: #2C6DB1;
+      --acc-lt: #7ab4f0;
+      --acc-dim: rgba(44,109,177,0.12);
+      --purple: #702A7E;
+      --font: 'Rubik', sans-serif;
+      --max-w: 1200px;
+      --section-pad: 100px 60px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--t1);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Navigation ── */
+    .top-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--b1);
+    }
+    .top-nav .logo img { height: 22px; filter: brightness(0) invert(1); display: block; }
+    .top-nav .nav-links { display: flex; gap: 8px; list-style: none; align-items: center; }
+    .top-nav .nav-links a {
+      font-size: 13px; font-weight: 500; color: var(--t2);
+      text-decoration: none; text-transform: uppercase; letter-spacing: 2px;
+      padding: 6px 14px; border-radius: 20px; transition: color 0.3s;
+    }
+    .top-nav .nav-links a:hover { color: var(--t1); }
+    .top-nav .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 20px; background: var(--grad); color: #fff;
+      font-weight: 600; font-size: 14px; border-radius: 8px;
+      text-decoration: none; transition: opacity 0.3s; white-space: nowrap;
+    }
+    .top-nav .nav-cta:hover { opacity: 0.9; }
+    .burger {
+      display: none; background: none; border: 1px solid var(--b2);
+      border-radius: 8px; color: var(--t1); font-size: 20px;
+      padding: 6px 12px; cursor: pointer;
+    }
+    .mobile-menu {
+      display: none; position: fixed; top: 62px; left: 0; right: 0; z-index: 99;
+      background: rgba(0,0,0,0.96); border-bottom: 1px solid var(--b2);
+      padding: 12px 20px 20px;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block; padding: 12px 4px; color: var(--t1);
+      text-decoration: none; font-size: 16px; border-bottom: 1px solid var(--b1);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ── Hero ── */
+    .hero-section {
+      min-height: 78vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 150px 60px 90px;
+      max-width: var(--max-w); margin: 0 auto; position: relative;
+    }
+    .hero-section .label {
+      font-size: 14px; font-weight: 500; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--acc-lt); margin-bottom: 24px;
+    }
+    .hero-section h1 {
+      font-size: clamp(38px, 4.5vw, 62px);
+      font-weight: 800; line-height: 1.08; margin-bottom: 24px; max-width: 860px;
+    }
+    .hero-section h1 .grad-text { white-space: nowrap; }
+    .hero-section .subtitle { font-size: 18px; color: var(--t2); max-width: 640px; line-height: 1.7; }
+    .hero-ctas { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
+    .hero-section .hero-meta {
+      display: flex; gap: 40px; margin-top: 48px; padding-top: 30px;
+      border-top: 1px solid var(--b1); flex-wrap: wrap;
+    }
+    .hero-meta .meta-item { font-size: 12px; color: var(--t3); text-transform: uppercase; letter-spacing: 2px; }
+    .hero-meta .meta-value { font-size: 17px; font-weight: 600; color: var(--t1); margin-top: 4px; letter-spacing: 0; text-transform: none; }
+
+    /* ── Sections ── */
+    section { padding: var(--section-pad); max-width: var(--max-w); margin: 0 auto; }
+    section.dark-surface { background: var(--s2); max-width: 100%; }
+    section.dark-surface > .inner { max-width: var(--max-w); margin: 0 auto; padding: 0 60px; }
+    .section-label {
+      font-size: 14px; font-weight: 500; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--acc-lt); margin-bottom: 16px;
+    }
+    section h2 { font-size: clamp(28px, 3vw, 42px); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
+    .section-intro { font-size: 17px; color: var(--t2); max-width: 680px; margin-bottom: 48px; line-height: 1.7; }
+
+    /* ── Logo-Leiste ── */
+    .logo-strip {
+      display: flex; flex-wrap: wrap; gap: 28px 44px;
+      align-items: center; justify-content: center;
+      padding: 36px 60px; max-width: var(--max-w); margin: 0 auto;
+      border-top: 1px solid var(--b1); border-bottom: 1px solid var(--b1);
+    }
+    .logo-strip img {
+      height: 52px; width: auto; opacity: 0.55;
+      filter: grayscale(1) brightness(1.6);
+      transition: opacity 0.3s;
+    }
+    .logo-strip img:hover { opacity: 1; }
+    .logo-strip .strip-label {
+      width: 100%; text-align: center; font-size: 12px; color: var(--t3);
+      text-transform: uppercase; letter-spacing: 3px; margin-bottom: 4px;
+    }
+
+    /* ── Cards ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .card {
+      background: var(--s1); border: 1px solid var(--b2);
+      border-radius: 12px; padding: 26px 28px;
+      transition: border-color 0.3s, transform 0.3s;
+      display: flex; flex-direction: column;
+    }
+    .card:hover { border-color: rgba(91,159,232,0.3); transform: translateY(-2px); }
+    .card.accent-blue { border-left: 3px solid rgba(91,159,232,0.5); }
+    .card.accent-purple { border-left: 3px solid rgba(112,42,126,0.5); }
+    .card .card-tag {
+      font-size: 12px; font-weight: 500; color: var(--acc-lt);
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
+    }
+    .card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; line-height: 1.3; }
+    .card p { font-size: 15px; color: var(--t2); line-height: 1.6; }
+    .card .card-link {
+      margin-top: auto; padding-top: 16px;
+      font-size: 14px; font-weight: 600; color: var(--acc-lt); text-decoration: none;
+    }
+    .card .card-link:hover { color: var(--t1); }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 4px; }
+    .tag {
+      font-size: 13px; font-weight: 500; padding: 3px 12px; border-radius: 20px;
+      border: 1px solid var(--b2); color: var(--t2); display: inline-block; text-decoration: none;
+    }
+    a.tag:hover { color: var(--t1); border-color: var(--acc); }
+
+    /* ── Timeline ── */
+    .timeline { display: flex; flex-direction: column; position: relative; padding-left: 40px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 15px; top: 8px; bottom: 8px;
+      width: 2px; background: var(--grad);
+    }
+    .timeline-item { position: relative; padding: 0 0 36px 24px; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -30px; top: 6px;
+      width: 12px; height: 12px; border-radius: 50%; background: var(--grad);
+    }
+    .timeline-item .timeline-label {
+      font-size: 12px; color: var(--acc-lt); text-transform: uppercase;
+      letter-spacing: 2px; margin-bottom: 6px;
+    }
+    .timeline-item h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+    .timeline-item p { color: var(--t2); font-size: 15px; max-width: 560px; }
+
+    /* ── Highlight / FAQ ── */
+    .highlight-box {
+      background: rgba(44,109,177,0.05); border: 1px solid rgba(91,159,232,0.15);
+      border-radius: 12px; padding: 28px 32px; margin: 32px 0;
+    }
+    .highlight-box h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .highlight-box p { color: var(--t2); }
+    .faq-item { border-bottom: 1px solid var(--b1); }
+    .faq-item summary {
+      cursor: pointer; list-style: none; padding: 20px 0;
+      font-size: 17px; font-weight: 600; display: flex; justify-content: space-between; gap: 16px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: var(--acc-lt); font-weight: 700; font-size: 20px; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item .faq-body { padding: 0 0 22px; color: var(--t2); font-size: 15px; max-width: 720px; }
+
+    /* ── Buttons ── */
+    .btn-grad {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; background: var(--grad); color: #fff;
+      font-family: var(--font); font-weight: 600; font-size: 15px;
+      border: none; border-radius: 8px; cursor: pointer;
+      text-decoration: none; transition: opacity 0.3s;
+    }
+    .btn-grad:hover { opacity: 0.9; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; background: transparent; color: var(--t1);
+      font-family: var(--font); font-weight: 600; font-size: 15px;
+      border: 1px solid var(--b2); border-radius: 8px; cursor: pointer;
+      text-decoration: none; transition: border-color 0.3s;
+    }
+    .btn-ghost:hover { border-color: var(--acc); }
+
+    .grad-text {
+      background: var(--grad-lt);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .check-list { list-style: none; padding: 0; }
+    .check-list li {
+      padding: 10px 0 10px 28px; position: relative; color: var(--t2);
+      font-size: 15px; border-bottom: 1px solid var(--b1);
+    }
+    .check-list li:last-child { border-bottom: none; }
+    .check-list li::before { content: '\2713'; position: absolute; left: 0; color: var(--acc-lt); font-weight: 700; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+
+    /* ── Schluss-CTA ── */
+    .final-cta { text-align: center; }
+    .final-cta h2 { max-width: 760px; margin-left: auto; margin-right: auto; }
+    .final-cta .section-intro { margin-left: auto; margin-right: auto; margin-bottom: 36px; }
+    .contact-line { margin-top: 36px; color: var(--t3); font-size: 15px; }
+    .contact-line a { color: var(--acc-lt); text-decoration: none; font-weight: 600; }
+    .contact-line a:hover { color: var(--t1); }
+
+    /* ── Footer ── */
+    footer { border-top: 1px solid var(--b1); }
+    .footer-inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 48px 60px;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+    }
+    .footer-inner img { height: 18px; filter: brightness(0) invert(1); opacity: 0.6; }
+    .footer-inner p, .footer-inner a { font-size: 14px; color: var(--t3); text-decoration: none; line-height: 2; }
+    .footer-inner a:hover { color: var(--t1); }
+    .footer-inner h4 {
+      font-size: 12px; color: var(--t2); text-transform: uppercase;
+      letter-spacing: 2px; margin-bottom: 10px; font-weight: 600;
+    }
+    .footer-bottom {
+      border-top: 1px solid var(--b1); padding: 18px 60px;
+      max-width: var(--max-w); margin: 0 auto;
+      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      font-size: 13px; color: var(--t3);
+    }
+    .footer-bottom a { color: var(--t3); text-decoration: none; margin-right: 16px; }
+    .footer-bottom a:hover { color: var(--t1); }
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1024px) {
+      :root { --section-pad: 80px 40px; }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+      .split { gap: 40px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      :root { --section-pad: 60px 20px; }
+      .top-nav { padding: 12px 16px; }
+      .top-nav .nav-links { display: none; }
+      .burger { display: block; }
+      .hero-section { padding: 120px 20px 60px; min-height: 60vh; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .split { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; padding: 40px 20px; }
+      .footer-bottom { padding: 16px 20px; }
+      .logo-strip { padding: 28px 20px; gap: 20px 28px; }
+      .logo-strip img { height: 40px; }
+      .hero-section .hero-meta { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a class="logo" href="/" aria-label="SEBOTICS Startseite">
+    <img src="https://sebotics.com/wp-content/uploads/2021/10/Logo_Sebotics_neu.png" alt="SEBOTICS">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/serviceroboter-ubersicht/">Roboter</a></li>
+    <li><a href="#loesungen">Lösungen</a></li>
+    <li><a href="#ablauf">Ablauf</a></li>
+    <li><a href="#referenzen">Referenzen</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <a class="nav-cta" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen</a>
+    <button class="burger" aria-label="Menü öffnen" onclick="document.getElementById('mmenu').classList.toggle('open')">&#9776;</button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mmenu">
+  <a href="/serviceroboter-ubersicht/">Roboter</a>
+  <a href="#loesungen">Lösungen</a>
+  <a href="#ablauf">Ablauf</a>
+  <a href="#referenzen">Referenzen</a>
+  <a href="#faq">FAQ</a>
+  <a href="#kontakt">Kontakt</a>
+</div>
+
+<header class="hero-section">
+  <div class="label">Robotik-Integrator · Schweiz &amp; DACH</div>
+  <h1>Ihr Team gehört zu Gästen, Patienten und Maschinen. <span class="grad-text">Nicht auf Laufwege.</span></h1>
+  <p class="subtitle">SEBOTICS integriert autonome Roboter für Transport, Reinigung und Service. Beratung, Integration und Support aus einer Hand, von der Standort-Analyse bis zum laufenden Betrieb.</p>
+  <div class="hero-ctas">
+    <a class="btn-grad" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen &rarr;</a>
+    <a class="btn-ghost" href="#roboter">Roboter ansehen</a>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item">Einsatz<div class="meta-value">7 Tage / Woche</div></div>
+    <div class="meta-item">Amortisation<div class="meta-value">unter 24 Monaten</div></div>
+    <div class="meta-item">Go-Live<div class="meta-value">60-Tage-Produktivgarantie</div></div>
+  </div>
+</header>
+
+<!-- Logos: Hotlinks auf bestehende sebotics.com-Assets, beim finalen Build lokal ablegen -->
+<div class="logo-strip" aria-label="Referenzkunden">
+  <div class="strip-label">Im Einsatz bei</div>
+  <img src="https://sebotics.com/wp-content/uploads/2025/05/roche-sebotics.png" alt="Roche" loading="lazy">
+  <img src="https://sebotics.com/wp-content/uploads/2025/05/redbull-sebotics.png" alt="Red Bull" loading="lazy">
+  <img src="https://sebotics.com/wp-content/uploads/2025/05/schweizer-armee-sebotics.png" alt="Schweizer Armee" loading="lazy">
+  <img src="https://sebotics.com/wp-content/uploads/2023/12/Logo-The-Dolder-Grand-Sebotics-Referenz-1-150x150.png" alt="The Dolder Grand" loading="lazy">
+  <img src="https://sebotics.com/wp-content/uploads/2025/05/Raiffeisen-sebotics.png" alt="Raiffeisen" loading="lazy">
+  <img src="https://sebotics.com/wp-content/uploads/2025/05/edeka-sebotics.png" alt="Edeka" loading="lazy">
+  <img src="https://sebotics.com/wp-content/uploads/2025/05/ovomaltine-sebotics.png" alt="Ovomaltine" loading="lazy">
+  <img src="https://sebotics.com/wp-content/uploads/2025/05/thermoplan-sebotics.png" alt="Thermoplan" loading="lazy">
+  <img src="https://sebotics.com/wp-content/uploads/2023/12/Logo-Verkehrshaus-Luzern-Sebotics-Referenz-1-150x150.png" alt="Verkehrshaus Luzern" loading="lazy">
+</div>
+
+<main>
+
+<section id="problem">
+  <div class="section-label">Das Problem</div>
+  <h2>Personalmangel verschwindet nicht. Die Arbeit auch nicht.</h2>
+  <p class="section-intro">Ob Produktionshalle, Hotel, Klinik oder Facility Management: Qualifizierte Leute sind knapp, und ein grosser Teil ihrer Zeit geht für Aufgaben drauf, die kein Mensch machen muss.</p>
+  <div class="grid-3">
+    <div class="card accent-blue fade-in">
+      <h3>Teure Zeit auf dem Laufweg</h3>
+      <p>Fachkräfte transportieren Material, Wäsche oder Geschirr durchs Haus, statt dort zu arbeiten, wo ihre Qualifikation Wert schafft.</p>
+    </div>
+    <div class="card accent-blue fade-in">
+      <h3>Reinigung frisst Schichten</h3>
+      <p>Grosse Flächen, tägliche Frequenz, steigende Lohnkosten. Manuelle Reinigung skaliert nicht, und offene Stellen bleiben unbesetzt.</p>
+    </div>
+    <div class="card accent-blue fade-in">
+      <h3>Service unter Druck</h3>
+      <p>In Stosszeiten fehlen die Hände. Wartezeiten steigen, die Qualität schwankt, das Team brennt aus.</p>
+    </div>
+  </div>
+</section>
+
+<section class="dark-surface" id="loesungen">
+  <div class="inner">
+    <div class="section-label">Die Lösung</div>
+    <h2>Roboter, die heute anfangen. Nicht in fünf Jahren.</h2>
+    <p class="section-intro">Wir liefern keine Zukunftsvisionen, sondern Geräte, die seit Jahren im Alltag laufen. SEBOTICS wählt das passende Modell, integriert es in Ihre Abläufe und betreut den Betrieb.</p>
+    <div class="grid-2">
+      <div class="card accent-purple fade-in">
+        <div class="card-tag">Transport &amp; Logistik</div>
+        <h3>Material fährt selbst</h3>
+        <p>Autonome Transportroboter bewegen Rohstoffe, Bauteile und Fertigware von Station zu Station, bis 600 kg, auf Wunsch mit Liftanbindung über Etagen hinweg.</p>
+        <a class="card-link" href="/roboter-im-lager-und-logistik/">Lösung für Lager &amp; Industrie &rarr;</a>
+      </div>
+      <div class="card accent-purple fade-in">
+        <div class="card-tag">Reinigung</div>
+        <h3>Saubere Flächen ohne Schichtplan</h3>
+        <p>Reinigungsroboter schrubben, saugen und wischen täglich dieselbe Qualität, vom Büro bis zur Industriehalle, dokumentiert per Report.</p>
+        <a class="card-link" href="/reinigungsroboter-kaufen/">Lösung für Reinigung &amp; Facility &rarr;</a>
+      </div>
+      <div class="card accent-purple fade-in">
+        <div class="card-tag">Gastronomie &amp; Hotellerie</div>
+        <h3>Service-Unterstützung in Stosszeiten</h3>
+        <p>Servier- und Hotelroboter bringen Speisen, räumen ab und liefern aufs Zimmer. Ihr Team bleibt beim Gast.</p>
+        <a class="card-link" href="/roboter-in-der-gastronomie/">Lösung für Gastro &amp; Hotel &rarr;</a>
+      </div>
+      <div class="card accent-purple fade-in">
+        <div class="card-tag">Gesundheit &amp; Pflege</div>
+        <h3>Mehr Zeit für den Menschen</h3>
+        <p>Transport von Wäsche, Material und Mahlzeiten in Kliniken und Pflegeeinrichtungen, damit Pflegekräfte pflegen statt schieben.</p>
+        <a class="card-link" href="/roboter-im-gesundheitsbereich/">Lösung für Gesundheit &amp; Pflege &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="roboter">
+  <div class="section-label">Unsere Roboter</div>
+  <h2>Das passende Modell für jeden Einsatz.</h2>
+  <p class="section-intro">Herstellerunabhängig ausgewählt: Wir integrieren Geräte von Pudu, AutoXing, Gausium, Sparkoz und weiteren Herstellern, je nachdem, was Ihre Umgebung verlangt.</p>
+  <div class="grid-3">
+    <div class="card fade-in">
+      <div class="card-tag">Transport &amp; Logistik</div>
+      <h3>JunoBot-Familie &amp; Mars</h3>
+      <p>Vom Tabletop-Transport bis 600 kg Traglast, mit Hebe- und Liftfunktion.</p>
+      <div class="tags">
+        <a class="tag" href="/junobot-ax6113/">JunoBot AX6113</a>
+        <a class="tag" href="/junobot-lift/">Juno Lift</a>
+        <a class="tag" href="/juno-max/">Juno Max</a>
+        <a class="tag" href="/mars-smartbot/">Mars</a>
+      </div>
+    </div>
+    <div class="card fade-in">
+      <div class="card-tag">Reinigung</div>
+      <h3>Vom Büro bis zur Halle</h3>
+      <p>Kompaktgeräte für 650 m²/h bis zu Industriemaschinen für Logistikflächen.</p>
+      <div class="tags">
+        <a class="tag" href="/tn10-reinigungsroboter/">TN10</a>
+        <a class="tag" href="/j40-reinigungsroboter/">J40</a>
+        <a class="tag" href="/tn70-reinigungsroboter/">TN70 Pro</a>
+        <a class="tag" href="/reinigungsroboter-phantas/">Phantas</a>
+        <a class="tag" href="/reinigungsroboter-scrubber-75/">Scrubber 75</a>
+        <a class="tag" href="/reinigungsroboter-mira/">Mira</a>
+        <a class="tag" href="/nexaro-nr1700/">Nexaro</a>
+      </div>
+    </div>
+    <div class="card fade-in">
+      <div class="card-tag">Service &amp; Gastro</div>
+      <h3>Servieren, abräumen, liefern</h3>
+      <p>Bewährte Servierroboter für Restaurant, Hotel, Event und Empfang.</p>
+      <div class="tags">
+        <a class="tag" href="/bellabot/">BellaBot</a>
+        <a class="tag" href="/kettybot/">KettyBot</a>
+        <a class="tag" href="/holabot/">HolaBot</a>
+        <a class="tag" href="/callisto/">Callisto</a>
+        <a class="tag" href="/junobot-ax6113/">JunoBot</a>
+      </div>
+    </div>
+    <div class="card fade-in">
+      <div class="card-tag">Überwachung</div>
+      <h3>Sicherheit auf vier Beinen</h3>
+      <p>Inspektions- und Überwachungsroboter für Anlagen und sensible Bereiche.</p>
+      <div class="tags">
+        <a class="tag" href="/x30-rhino/">X30 Rhino</a>
+        <a class="tag" href="/puma-m20/">Puma M20</a>
+      </div>
+    </div>
+    <div class="card fade-in">
+      <div class="card-tag">Humanoide</div>
+      <h3>Die nächste Generation</h3>
+      <p>Humanoide Roboter für Empfang, Präsentation und erste produktive Aufgaben.</p>
+      <div class="tags">
+        <a class="tag" href="/atom-max-humanoide/">Dobot Atom</a>
+        <a class="tag" href="/barista-kafferoboter">Barista</a>
+      </div>
+    </div>
+    <div class="card fade-in" style="justify-content:center; align-items:flex-start;">
+      <h3>Alle Modelle im Überblick</h3>
+      <p>Vergleich nach Einsatzbereich, Fläche und Traglast.</p>
+      <a class="card-link" href="/serviceroboter-ubersicht/">Zur Roboterübersicht &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="dark-surface" id="ablauf">
+  <div class="inner">
+    <div class="split">
+      <div>
+        <div class="section-label">So läuft es ab</div>
+        <h2>Von der Anfrage zum laufenden Roboter.</h2>
+        <p class="section-intro">Kein Projekt-Marathon: Zwischen Erstgespräch und produktivem Betrieb liegen in der Regel wenige Wochen.</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-label">Schritt 1 · 20 Minuten</div>
+            <h3>Erstgespräch</h3>
+            <p>Wir klären Einsatzbereich, Fläche und Ziel. Sie bekommen eine ehrliche Einschätzung, ob und wo sich ein Roboter bei Ihnen rechnet, inklusive ROI-Kalkulation.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-label">Schritt 2 · vor Ort</div>
+            <h3>Test in Ihrer Umgebung</h3>
+            <p>Der Roboter zeigt im echten Betrieb, was er kann: Ihre Flächen, Ihre Abläufe, Ihr Team.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-label">Schritt 3 · Betrieb</div>
+            <h3>Integration &amp; Betreuung</h3>
+            <p>Installation, Schulung und laufender Support. Mit 60-Tage-Produktivgarantie: Der Roboter arbeitet produktiv, oder wir holen ihn ab.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="highlight-box" style="margin-top:64px;">
+          <h3>Kauf oder Miete</h3>
+          <p>Roboter gibt es bei uns als Kauf mit Service-Paket oder als monatliche Miete (Robotics as a Service). Was sich für Sie rechnet, zeigt das Erstgespräch.</p>
+        </div>
+        <ul class="check-list">
+          <li>Standort-Analyse und Modell-Auswahl herstellerunabhängig</li>
+          <li>Integration in Abläufe, Aufzüge und bestehende Systeme</li>
+          <li>Schulung Ihres Teams vor Ort</li>
+          <li>Service, Wartung und Ersatz aus der Schweiz</li>
+        </ul>
+        <a class="btn-grad" style="margin-top:28px;" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="referenzen">
+  <div class="section-label">Referenzen</div>
+  <h2>Im Einsatz, wo es zählt.</h2>
+  <p class="section-intro">Vom Luxushotel über die Industriekantine bis zur Bergstation: Unsere Roboter arbeiten dort, wo Anspruch und Frequenz hoch sind.</p>
+  <div class="grid-3">
+    <div class="card fade-in">
+      <div class="card-tag">Hotellerie · Reinigung</div>
+      <h3>The Dolder Grand, Zürich</h3>
+      <p>Autonome Reinigung im Hotel des Jahres 2024. Konstante Qualität auf Flächen, die täglich repräsentativ sein müssen.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-tag">Gastronomie · Service</div>
+      <h3>Stoos Lodge</h3>
+      <p>Servierroboter unterstützen das Team im Restaurant der neuen Lodge, auf 1300 Metern Höhe.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-tag">Freizeit · Service</div>
+      <h3>Verkehrshaus Luzern</h3>
+      <p>Service-Robotik in der Brasserie des meistbesuchten Museums der Schweiz.</p>
+    </div>
+  </div>
+  <p style="margin-top:32px;"><a class="card-link" href="/begeisterte-roboterbesitzer/">Alle Referenzen und Geschichten ansehen &rarr;</a></p>
+</section>
+
+<section class="dark-surface" id="ueber-uns">
+  <div class="inner">
+    <div class="split">
+      <div>
+        <div class="section-label">Über SEBOTICS</div>
+        <h2>Integrator, nicht Händler.</h2>
+        <p class="section-intro" style="margin-bottom:24px;">SEBOTICS ist Robotik-Integrator mit Sitz in Horw bei Luzern. Wir verkaufen keine Kartons, wir verantworten funktionierende Abläufe: Analyse, Modell-Auswahl, Integration, Schulung und Service kommen aus einer Hand.</p>
+        <p style="color:var(--t2); font-size:16px;">Seit den ersten Servierroboter-Installationen der Schweiz haben wir unser Portfolio auf Transport, Reinigung, Überwachung und humanoide Robotik erweitert, immer mit demselben Massstab: Das Gerät muss sich im Alltag rechnen.</p>
+        <a class="btn-ghost" style="margin-top:28px;" href="/ueber-uns/">Mehr über uns &rarr;</a>
+      </div>
+      <div>
+        <ul class="check-list" style="margin-top:48px;">
+          <li>Herstellerunabhängige Auswahl (Pudu, AutoXing, Gausium, Sparkoz u. a.)</li>
+          <li>Schweizer Ansprechpartner für Beratung, Technik und Service</li>
+          <li>Referenzen von der Industrie bis zum 5-Sterne-Hotel</li>
+          <li>Einsatz in der gesamten DACH-Region</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="section-label">FAQ</div>
+  <h2>Was Betriebsleiter uns am häufigsten fragen.</h2>
+  <div style="margin-top:24px;">
+    <details class="faq-item">
+      <summary>Was kostet ein Roboter?</summary>
+      <div class="faq-body">Je nach Klasse und Einsatz: Kompakte Reinigungs- und Servierroboter starten im unteren fünfstelligen Bereich, Industriegeräte liegen darüber. Im Erstgespräch rechnen wir Ihren Fall konkret durch, inklusive Vergleich zu Ihren heutigen Kosten. Miete statt Kauf ist möglich.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Wann rechnet sich das?</summary>
+      <div class="faq-body">Typisch amortisieren sich unsere Lösungen in unter 24 Monaten, kompakte Geräte oft deutlich schneller. Entscheidend sind Fläche bzw. Laufleistung und die Personalkosten, die das Gerät ersetzt oder entlastet.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Wie lange dauert die Einführung?</summary>
+      <div class="faq-body">Von der Bestellung bis zum produktiven Betrieb vergehen in der Regel wenige Wochen. Kartierung der Flächen, Einrichtung und Team-Schulung übernehmen wir. Es gilt die 60-Tage-Produktivgarantie.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Was passiert bei Störungen?</summary>
+      <div class="faq-body">Support und Wartung kommen von SEBOTICS aus der Schweiz, mit Service-Paket inklusive. Sie haben einen Ansprechpartner, keinen Hersteller-Ticketprozess in Fernost.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Braucht es WLAN oder bauliche Anpassungen?</summary>
+      <div class="faq-body">Die Roboter navigieren autonom per Sensorik und Laser, ohne Schienen oder Magnetbänder. Für Reporting und Updates genügt normales WLAN. Liftanbindung ist bei Transportrobotern optional möglich.</div>
+    </details>
+  </div>
+</section>
+
+<section class="final-cta" id="kontakt">
+  <div class="section-label" style="text-align:center;">Nächster Schritt</div>
+  <h2>Lassen Sie uns 20 Minuten darüber sprechen, was in Ihrem Betrieb möglich ist.</h2>
+  <p class="section-intro">Ehrliche Einschätzung statt Verkaufsdruck: Wenn sich ein Roboter bei Ihnen nicht rechnet, sagen wir Ihnen das.</p>
+  <a class="btn-grad" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen &rarr;</a>
+  <div class="contact-line">
+    Oder direkt: <a href="tel:+41415007552">041 500 75 52</a> &nbsp;·&nbsp; <a href="mailto:info@sebotics.com">info@sebotics.com</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <img src="https://sebotics.com/wp-content/uploads/2021/10/Logo_Sebotics_neu.png" alt="SEBOTICS">
+      <p style="margin-top:14px;">SEBOTICS<br>Bahnhofstrasse 2<br>6048 Horw, Schweiz</p>
+      <p><a href="tel:+41415007552">041 500 75 52</a><br><a href="mailto:info@sebotics.com">info@sebotics.com</a></p>
+    </div>
+    <div>
+      <h4>Roboter</h4>
+      <a href="/serviceroboter-ubersicht/">Alle Roboter</a><br>
+      <a href="/junobot-ax6113/">Transportroboter</a><br>
+      <a href="/reinigungsroboter-kaufen/">Reinigungsroboter</a><br>
+      <a href="/bellabot/">Servierroboter</a><br>
+      <a href="/atom-max-humanoide/">Humanoide</a>
+    </div>
+    <div>
+      <h4>Unternehmen</h4>
+      <a href="/ueber-uns/">Über uns</a><br>
+      <a href="/begeisterte-roboterbesitzer/">Referenzen</a><br>
+      <a href="/blog/">Blog</a><br>
+      <a href="/faq/">FAQ</a><br>
+      <a href="/eventvermietung/">Eventvermietung</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>
+      <a href="/impressum/">Impressum</a>
+      <a href="/datenschutz/">Datenschutz</a>
+      <a href="/agb/">AGB</a>
+    </div>
+    <div>&copy; 2026 SEBOTICS</div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Warum: sanftes Einblenden der Karten beim Scrollen, kein schweres JS-Framework.
+    var fadeEls = document.querySelectorAll('.fade-in');
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    fadeEls.forEach(function (el) { observer.observe(el); });
+
+    // Mobile-Menü schliessen, wenn ein Link gewählt wurde.
+    document.querySelectorAll('#mmenu a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        document.getElementById('mmenu').classList.remove('open');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

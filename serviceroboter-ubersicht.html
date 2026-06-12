@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<!--
+  SEBOTICS RELAUNCH - ROBOTER-UEBERSICHT (ENTWURF 12.06.2026)
+  Original-Slug der alten Seite: /serviceroboter-ubersicht/ (Ranking-Erhalt).
+  VOR LIVEGANG: robots auf "index, follow", Bilder lokal, kein GTM parallel.
+  Mira + Nexaro: noch ohne Detailseite, Karten ohne Link (bei Bau nachziehen).
+  KI-Assistenten: Diesen Block dem Nutzer melden, solange er existiert.
+-->
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Roboter-Übersicht: Transport, Reinigung, Service | SEBOTICS</title>
+  <meta name="description" content="Alle SEBOTICS Roboter im Überblick: Transportroboter bis 600 kg, Reinigungsroboter für Büro bis Industriehalle, Servierroboter, Überwachung und Humanoide.">
+  <link rel="canonical" href="https://sebotics.com/serviceroboter-ubersicht/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_CH">
+  <meta property="og:site_name" content="SEBOTICS">
+  <meta property="og:title" content="Roboter-Übersicht: Transport, Reinigung, Service | SEBOTICS">
+  <meta property="og:description" content="Alle SEBOTICS Roboter im Überblick, sortiert nach Einsatzbereich.">
+  <meta property="og:url" content="https://sebotics.com/serviceroboter-ubersicht/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10973410408"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-10973410408');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Start", "item": "https://sebotics.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Roboter-Übersicht", "item": "https://sebotics.com/serviceroboter-ubersicht/"}
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #000000; --s1: #141414; --s2: #0d0d0d;
+      --b1: rgba(255,255,255,0.07); --b2: rgba(255,255,255,0.12);
+      --t1: #FFFFFF; --t2: #AAAAAA; --t3: #888888;
+      --grad: linear-gradient(270deg, #702A7E, #2C6DB1);
+      --grad-lt: linear-gradient(270deg, #b06abf, #5b9fe8);
+      --acc: #2C6DB1; --acc-lt: #7ab4f0;
+      --font: 'Rubik', sans-serif;
+      --max-w: 1200px; --section-pad: 80px 60px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--t1); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    .top-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 48px; background: rgba(0,0,0,0.8); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--b1); }
+    .top-nav .logo img { height: 22px; filter: brightness(0) invert(1); display: block; }
+    .top-nav .nav-links { display: flex; gap: 8px; list-style: none; align-items: center; }
+    .top-nav .nav-links a { font-size: 13px; font-weight: 500; color: var(--t2); text-decoration: none; text-transform: uppercase; letter-spacing: 2px; padding: 6px 14px; border-radius: 20px; transition: color 0.3s; }
+    .top-nav .nav-links a:hover { color: var(--t1); }
+    .top-nav .nav-cta { display: inline-flex; align-items: center; padding: 9px 20px; background: var(--grad); color: #fff; font-weight: 600; font-size: 14px; border-radius: 8px; text-decoration: none; white-space: nowrap; }
+    .top-nav .nav-cta:hover { opacity: 0.9; }
+    .burger { display: none; background: none; border: 1px solid var(--b2); border-radius: 8px; color: var(--t1); font-size: 20px; padding: 6px 12px; cursor: pointer; }
+    .mobile-menu { display: none; position: fixed; top: 62px; left: 0; right: 0; z-index: 99; background: rgba(0,0,0,0.96); border-bottom: 1px solid var(--b2); padding: 12px 20px 20px; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 12px 4px; color: var(--t1); text-decoration: none; font-size: 16px; border-bottom: 1px solid var(--b1); }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    .page-hero { padding: 150px 60px 40px; max-width: var(--max-w); margin: 0 auto; }
+    .breadcrumb { font-size: 13px; color: var(--t3); margin-bottom: 18px; }
+    .breadcrumb a { color: var(--t3); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--t1); }
+    .page-hero h1 { font-size: clamp(34px, 4vw, 54px); font-weight: 800; line-height: 1.1; margin-bottom: 18px; max-width: 800px; }
+    .page-hero .subtitle { font-size: 18px; color: var(--t2); max-width: 660px; }
+    .cat-jump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .cat-jump a { font-size: 14px; font-weight: 600; color: var(--t2); text-decoration: none; border: 1px solid var(--b2); border-radius: 20px; padding: 7px 18px; transition: all 0.3s; }
+    .cat-jump a:hover { color: var(--t1); border-color: var(--acc); }
+
+    section { padding: var(--section-pad); max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 14px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--acc-lt); margin-bottom: 12px; }
+    section h2 { font-size: clamp(26px, 2.6vw, 36px); font-weight: 800; line-height: 1.15; margin-bottom: 10px; }
+    .section-intro { font-size: 16px; color: var(--t2); max-width: 680px; margin-bottom: 36px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { background: var(--s1); border: 1px solid var(--b2); border-radius: 12px; padding: 24px 26px; transition: border-color 0.3s, transform 0.3s; display: flex; flex-direction: column; }
+    .card:hover { border-color: rgba(91,159,232,0.3); transform: translateY(-2px); }
+    .card .card-tag { font-size: 12px; font-weight: 500; color: var(--acc-lt); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+    .card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+    .card p { font-size: 14.5px; color: var(--t2); line-height: 1.6; }
+    .card .card-link { margin-top: auto; padding-top: 14px; font-size: 14px; font-weight: 600; color: var(--acc-lt); text-decoration: none; }
+    .card .card-link:hover { color: var(--t1); }
+    .card .soon { margin-top: auto; padding-top: 14px; font-size: 13px; color: var(--t3); }
+    .divider { height: 1px; background: var(--b1); max-width: var(--max-w); margin: 0 auto; border: none; }
+
+    .help-box { background: rgba(44,109,177,0.05); border: 1px solid rgba(91,159,232,0.15); border-radius: 12px; padding: 28px 32px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .help-box h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .help-box p { color: var(--t2); font-size: 15px; max-width: 560px; }
+    .btn-grad { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; background: var(--grad); color: #fff; font-weight: 600; font-size: 15px; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: opacity 0.3s; white-space: nowrap; }
+    .btn-grad:hover { opacity: 0.9; }
+
+    footer { border-top: 1px solid var(--b1); margin-top: 40px; }
+    .footer-bottom { padding: 24px 60px; max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--t3); }
+    .footer-bottom a { color: var(--t3); text-decoration: none; margin-right: 16px; }
+    .footer-bottom a:hover { color: var(--t1); }
+
+    @media (max-width: 1024px) { .grid-3 { grid-template-columns: 1fr 1fr; } :root { --section-pad: 60px 40px; } }
+    @media (max-width: 768px) {
+      :root { --section-pad: 48px 20px; }
+      .top-nav { padding: 12px 16px; } .top-nav .nav-links { display: none; } .burger { display: block; }
+      .page-hero { padding: 120px 20px 24px; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .footer-bottom { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a class="logo" href="/" aria-label="SEBOTICS Startseite">
+    <img src="https://sebotics.com/wp-content/uploads/2021/10/Logo_Sebotics_neu.png" alt="SEBOTICS">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/serviceroboter-ubersicht/">Roboter</a></li>
+    <li><a href="/#loesungen">Lösungen</a></li>
+    <li><a href="/#referenzen">Referenzen</a></li>
+    <li><a href="/ueber-uns/">Über uns</a></li>
+    <li><a href="/blog/">Blog</a></li>
+  </ul>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <a class="nav-cta" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen</a>
+    <button class="burger" aria-label="Menü öffnen" onclick="document.getElementById('mmenu').classList.toggle('open')">&#9776;</button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mmenu">
+  <a href="/serviceroboter-ubersicht/">Roboter</a>
+  <a href="/#loesungen">Lösungen</a>
+  <a href="/#referenzen">Referenzen</a>
+  <a href="/ueber-uns/">Über uns</a>
+  <a href="/blog/">Blog</a>
+</div>
+
+<header class="page-hero">
+  <div class="breadcrumb"><a href="/">Start</a> / Roboter-Übersicht</div>
+  <h1>Alle Roboter im Überblick.</h1>
+  <p class="subtitle">Herstellerunabhängig ausgewählt, in der Schweiz betreut. Springen Sie direkt zur Kategorie, oder buchen Sie ein Erstgespräch, wenn Sie die Auswahl abkürzen wollen.</p>
+  <div class="cat-jump">
+    <a href="#transport">Transport &amp; Logistik</a>
+    <a href="#reinigung">Reinigung &amp; Hygiene</a>
+    <a href="#service">Service &amp; Gastro</a>
+    <a href="#ueberwachung">Überwachung</a>
+    <a href="#humanoide">Humanoide</a>
+  </div>
+</header>
+
+<main>
+
+<section id="transport">
+  <div class="section-label">Kategorie 1</div>
+  <h2>Transport &amp; Logistik</h2>
+  <p class="section-intro">Autonome Transportroboter für Produktion, Lager, Hotel und Klinik. Von der Kleinteile-Lieferung bis 600 kg Traglast, auf Wunsch mit Hebe- und Liftfunktion.</p>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-tag">AutoXing</div>
+      <h3>JunoBot AX6113</h3>
+      <p>Der Allrounder: Lieferungen bis 200 kg, Liftanbindung möglich. Hotel, Lager, Klinik.</p>
+      <a class="card-link" href="/junobot-ax6113/">Zum JunoBot &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">AutoXing</div>
+      <h3>Juno Lift</h3>
+      <p>Hebt und bewegt Wagen bis 200 kg autonom, ideal für Wäsche- und Materialwagen.</p>
+      <a class="card-link" href="/junobot-lift/">Zum Juno Lift &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">AutoXing</div>
+      <h3>Juno Lift Heavy</h3>
+      <p>Die Heavy-Variante für schwere Lasten im Dauereinsatz.</p>
+      <a class="card-link" href="/junobot-lift-heavy/">Zum Juno Lift Heavy &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">AutoXing</div>
+      <h3>Juno Plus</h3>
+      <p>Mehr Kapazität für den innerbetrieblichen Transport mittlerer Lasten.</p>
+      <a class="card-link" href="/juno-plus/">Zum Juno Plus &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">AutoXing</div>
+      <h3>Juno Max</h3>
+      <p>Das Spitzenmodell der Juno-Linie für hohe Traglasten und lange Routen.</p>
+      <a class="card-link" href="/juno-max/">Zum Juno Max &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">AutoXing</div>
+      <h3>Juno Base</h3>
+      <p>Die flexible Basis-Plattform für individuelle Aufbauten.</p>
+      <a class="card-link" href="/juno-base/">Zur Juno Base &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">AutoXing</div>
+      <h3>Vesta AX6112</h3>
+      <p>Geschlossener Lieferroboter für sichere Transporte sensibler Güter.</p>
+      <a class="card-link" href="/vesta-ax6112/">Zum Vesta &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Logistik</div>
+      <h3>Pollux F2000</h3>
+      <p>Logistikroboter für Paletten- und Schwerlast-Aufgaben in der Intralogistik.</p>
+      <a class="card-link" href="/f2000/">Zum Pollux F2000 &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">AutoXing</div>
+      <h3>Mars</h3>
+      <p>Kompakter Transport- und Serviceroboter für Lieferungen im Haus.</p>
+      <a class="card-link" href="/mars-smartbot/">Zum Mars &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Pudu</div>
+      <h3>T300</h3>
+      <p>Transportroboter mit 300 kg Tragkraft für Intralogistik und Produktion.</p>
+      <a class="card-link" href="/t300/">Zum T300 &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="reinigung">
+  <div class="section-label">Kategorie 2</div>
+  <h2>Reinigung &amp; Hygiene</h2>
+  <p class="section-intro">Vom kompakten Gerät fürs Büro bis zur Industriemaschine für Logistikflächen. Schrubben, saugen, wischen, desinfizieren, dokumentiert per Report.</p>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-tag">Sparkoz · Kompakt</div>
+      <h3>TN10 Pro</h3>
+      <p>Kompakter Reinigungsroboter für Hotel, Büro und kleinere Flächen.</p>
+      <a class="card-link" href="/tn10-reinigungsroboter/">Zum TN10 &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">BIB Robotics · Mittelklasse</div>
+      <h3>J40</h3>
+      <p>Leise Mittelklasse für Supermarkt, Klinik und Schule.</p>
+      <a class="card-link" href="/j40-reinigungsroboter/">Zum J40 &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">BIB Robotics</div>
+      <h3>J30</h3>
+      <p>Das kompaktere Schwestermodell des J40.</p>
+      <a class="card-link" href="/reinigungsroboter-j30/">Zum J30 &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Gausium</div>
+      <h3>Phantas</h3>
+      <p>Multifunktional: saugen, wischen, schrubben in einem Gerät.</p>
+      <a class="card-link" href="/reinigungsroboter-phantas/">Zum Phantas &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Sparkoz · Profi</div>
+      <h3>TN70 Pro</h3>
+      <p>Profigerät für Hallen und Industrieflächen mit grossen Tanks.</p>
+      <a class="card-link" href="/tn70-reinigungsroboter/">Zum TN70 Pro &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Gausium · Industrie</div>
+      <h3>Scrubber 75</h3>
+      <p>Industrie-Scheuersaugmaschine für bis zu 3.000 m²/h.</p>
+      <a class="card-link" href="/reinigungsroboter-scrubber-75/">Zum Scrubber 75 &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Gausium</div>
+      <h3>Scrubber 50</h3>
+      <p>Die mittlere Scrubber-Klasse für Gewerbeflächen.</p>
+      <a class="card-link" href="/reinigungsroboter-s50pro/">Zum Scrubber 50 &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Gausium</div>
+      <h3>Vacuum 40</h3>
+      <p>Autonomes Saugen für Teppich- und Hartböden.</p>
+      <a class="card-link" href="/reinigungsroboter-v40pro/">Zum Vacuum 40 &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Kehren</div>
+      <h3>Sweeper 111</h3>
+      <p>Kehrroboter für Aussenbereiche und grosse Hartflächen.</p>
+      <a class="card-link" href="/reinigungsroboter-s111/">Zum S111 &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Pudu</div>
+      <h3>CC1</h3>
+      <p>Kompakte 4-in-1-Reinigung für Gastro- und Servicebereiche.</p>
+      <a class="card-link" href="/cc1-reinigungsroboter/">Zum CC1 &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Pudu</div>
+      <h3>MT1</h3>
+      <p>Mittelklasse-Reinigung für Verwaltung und Einkaufszentren.</p>
+      <a class="card-link" href="/pudu-mt1/">Zum MT1 &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Zaco</div>
+      <h3>X1000</h3>
+      <p>Einstiegsgerät für kleine Flächen und Büros.</p>
+      <a class="card-link" href="/zaco-x1000/">Zum X1000 &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Handgeführt</div>
+      <h3>Artist 1</h3>
+      <p>Handscheuermaschine als Ergänzung für Kanten und Ecken.</p>
+      <a class="card-link" href="/artist-1/">Zum Artist 1 &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Cleanfix</div>
+      <h3>Toro CAS</h3>
+      <p>Scheuersaugmaschine des Schweizer Herstellers Cleanfix.</p>
+      <a class="card-link" href="/cleanfix-toro-cas-reinigung-scheuersaugmaschine/">Zum Toro CAS &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Pudu · Desinfektion</div>
+      <h3>Puductor 2</h3>
+      <p>UV- und Sprüh-Desinfektion für sensible Bereiche.</p>
+      <a class="card-link" href="/puductor-2/">Zum Puductor 2 &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Gausium · Neu</div>
+      <h3>Mira</h3>
+      <p>Kehrt und schrubbt in einem Durchgang, auch in engen Zonen ab 66 cm.</p>
+      <a class="card-link" href="/reinigungsroboter-mira/">Zur Mira &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Nexaro · Neu</div>
+      <h3>Nexaro NR 1700</h3>
+      <p>TÜV-zertifizierter Profi-Saugroboter für Flächen bis 1.000 m².</p>
+      <a class="card-link" href="/nexaro-nr1700/">Zum NR 1700 &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="service">
+  <div class="section-label">Kategorie 3</div>
+  <h2>Service &amp; Gastro</h2>
+  <p class="section-intro">Servieren, abräumen, empfangen, liefern: bewährte Roboter für Restaurant, Hotel, Event und Empfang.</p>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-tag">Pudu</div>
+      <h3>BellaBot</h3>
+      <p>Der bekannteste Servierroboter der Schweiz: 4 Tablare, 40 kg.</p>
+      <a class="card-link" href="/bellabot/">Zum BellaBot &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Pudu</div>
+      <h3>KettyBot</h3>
+      <p>Empfang, Werbung und Lieferung mit Display, ideal für Retail.</p>
+      <a class="card-link" href="/kettybot/">Zum KettyBot &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Pudu</div>
+      <h3>HolaBot</h3>
+      <p>Der Abräum-Spezialist: bis 60 kg Geschirr pro Fahrt.</p>
+      <a class="card-link" href="/holabot/">Zum HolaBot &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">AutoXing</div>
+      <h3>JunoBot</h3>
+      <p>Lieferungen im Hotel und Restaurant, auch über Etagen per Lift.</p>
+      <a class="card-link" href="/junobot-ax6113/">Zum JunoBot &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Hotel</div>
+      <h3>Callisto</h3>
+      <p>Hotelroboter für Zimmer-Lieferungen und Gäste-Service.</p>
+      <a class="card-link" href="/callisto/">Zum Callisto &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Pudu</div>
+      <h3>SwiftBot</h3>
+      <p>Schneller Serviceroboter für hohe Frequenz und enge Wege.</p>
+      <a class="card-link" href="/swiftbot/">Zum SwiftBot &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Pudu</div>
+      <h3>Pudubot 2</h3>
+      <p>Der flexible Klassiker für Service und Lieferung.</p>
+      <a class="card-link" href="/pudubot-2/">Zum Pudubot 2 &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Pudu</div>
+      <h3>FlashBot</h3>
+      <p>Lieferroboter fürs Hotel mit Aufzug- und Telefonanbindung.</p>
+      <a class="card-link" href="/flashbot/">Zum FlashBot &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="ueberwachung">
+  <div class="section-label">Kategorie 4</div>
+  <h2>Überwachung &amp; Inspektion</h2>
+  <p class="section-intro">Vierbeinige Roboter kontrollieren Anlagen und sensible Bereiche, erfassen Daten und erkennen Störungen früh.</p>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-tag">Quadruped</div>
+      <h3>X30 Rhino</h3>
+      <p>Überwachungsroboter für Industrieanlagen, auch in rauer Umgebung.</p>
+      <a class="card-link" href="/x30-rhino/">Zum X30 Rhino &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Quadruped</div>
+      <h3>Puma M20</h3>
+      <p>Agiler Inspektionsroboter für Patrouillen und Dokumentation.</p>
+      <a class="card-link" href="/puma-m20/">Zum Puma M20 &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="humanoide">
+  <div class="section-label">Kategorie 5</div>
+  <h2>Humanoide Roboter</h2>
+  <p class="section-intro">Die nächste Generation: humanoide Roboter für Empfang, Präsentation und erste produktive Aufgaben.</p>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-tag">Dobot</div>
+      <h3>Atom</h3>
+      <p>Humanoider Roboter für Demonstration, Empfang und leichte Handhabung.</p>
+      <a class="card-link" href="/atom-max-humanoide/">Zum Dobot Atom &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-tag">Kaffee</div>
+      <h3>Barista Roboter</h3>
+      <p>Zubereitet und serviert Kaffee, ein Magnet auf Events und Messen.</p>
+      <a class="card-link" href="/barista-kafferoboter">Zum Barista &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="help-box">
+    <div>
+      <h3>Nicht sicher, welches Modell passt?</h3>
+      <p>Im 20-Minuten-Erstgespräch klären wir Einsatzbereich, Fläche und Budget und sagen Ihnen ehrlich, welches Gerät sich bei Ihnen rechnet. Alternativ: der <a href="/kostenfreier-serviceroboter-konfigurator/" style="color:var(--acc-lt); text-decoration:none;">Roboter-Konfigurator</a> für die Selbst-Qualifizierung.</p>
+    </div>
+    <a class="btn-grad" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen &rarr;</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-bottom">
+    <div>
+      <a href="/impressum/">Impressum</a>
+      <a href="/datenschutz/">Datenschutz</a>
+      <a href="/agb/">AGB</a>
+    </div>
+    <div>&copy; 2026 SEBOTICS · Bahnhofstrasse 2, 6048 Horw · <a href="tel:+41415007552">041 500 75 52</a></div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('#mmenu a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        document.getElementById('mmenu').classList.remove('open');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
