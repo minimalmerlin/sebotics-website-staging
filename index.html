@@ -104,7 +104,7 @@
       border-bottom: 1px solid transparent; }
     .nav.scrolled { padding-top: 13px; padding-bottom: 13px; background: rgba(6,6,8,0.72);
       backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--b1); }
-    .nav .logo img { height: 24px; filter: brightness(0) invert(1); }
+    .nav .logo img { height: clamp(32px, 3.5vw, 44px); width: auto; filter: brightness(0) invert(1); }
     .nav-links { display: flex; gap: 4px; list-style: none; align-items: center; }
     .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--t2); text-decoration: none;
       padding: 8px 16px; border-radius: 100px; transition: color 0.25s, background 0.25s; }
@@ -162,7 +162,15 @@
     .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px 7px 12px;
       border: 1px solid var(--b2); border-radius: 100px; font-size: 13px; color: var(--t2); margin-bottom: 30px;
       background: rgba(255,255,255,0.02); }
-    .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #46d18a; box-shadow: 0 0 10px #46d18a; }
+    .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #46d18a; box-shadow: 0 0 10px #46d18a; animation: pulse-dot 2s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%,100% { box-shadow: 0 0 6px #46d18a; } 50% { box-shadow: 0 0 16px #46d18a, 0 0 28px rgba(70,209,138,0.4); } }
+
+    /* Film-grain overlay on hero */
+    .hero::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 200px 200px; animation: grain 0.5s steps(1) infinite; }
+    @keyframes grain { 0%{background-position:0 0} 10%{background-position:-20px -30px} 20%{background-position:15px -5px} 30%{background-position:-10px 20px} 40%{background-position:30px 10px} 50%{background-position:-5px -25px} 60%{background-position:20px 30px} 70%{background-position:-30px 5px} 80%{background-position:10px -10px} 90%{background-position:-15px 25px} 100%{background-position:5px -20px} }
     .hero h1 { font-size: clamp(40px, 7vw, 88px); font-weight: 800; line-height: 1.02; letter-spacing: -0.02em;
       max-width: 16ch; margin-bottom: 28px; }
     .hero .sub { font-size: clamp(17px, 2.2vw, 21px); color: var(--t2); max-width: 56ch; line-height: 1.6; }
@@ -300,7 +308,7 @@
     /* ── Footer ── */
     footer { border-top: 1px solid var(--b1); padding: 70px 0 36px; background: var(--s2); }
     .foot-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
-    .foot-brand img { height: 22px; filter: brightness(0) invert(1); opacity: 0.85; margin-bottom: 18px; }
+    .foot-brand img { height: clamp(28px, 3vw, 38px); width: auto; filter: brightness(0) invert(1); opacity: 0.85; margin-bottom: 18px; }
     .foot-brand p { font-size: 14px; color: var(--t3); line-height: 1.9; }
     .foot-brand a { color: var(--t2); text-decoration: none; }
     .foot-col h4 { font-size: 12px; color: var(--t2); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; font-weight: 600; }
@@ -350,7 +358,7 @@
 
 <nav class="nav" id="nav">
   <a class="logo" href="/" aria-label="SEBOTICS Startseite">
-    <img src="https://sebotics.com/wp-content/uploads/2021/10/Logo_Sebotics_neu.png" alt="SEBOTICS">
+    <img src="data:image/webp;base64,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" alt="SEBOTICS">
   </a>
   <ul class="nav-links">
     <li><a href="/serviceroboter-ubersicht/">Roboter</a></li>
@@ -383,8 +391,8 @@
   </div>
   <div class="grid-overlay" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="hero-badge reveal"><span class="dot"></span> Robotik-Integrator · Schweiz &amp; DACH</div>
-    <h1 class="reveal d1">Maschinen übernehmen die Routine. <span class="grad-text">Ihr Team das, was zählt.</span></h1>
+    <div class="hero-badge reveal"><span class="dot"></span> Jetzt Mitarbeiter entlasten, ohne auf Qualität zu verzichten.</div>
+    <h1 class="reveal d1">Maschinen übernehmen die Routine. <span class="grad-text" id="typewriter"></span></h1>
     <p class="sub reveal d2">SEBOTICS integriert autonome Roboter für Transport, Reinigung und Service. Beratung, Integration und Support aus einer Hand, von der Standort-Analyse bis zum laufenden Betrieb.</p>
     <div class="hero-ctas reveal d3">
       <a class="btn-primary" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen <span class="arrow">&rarr;</span></a>
@@ -560,7 +568,7 @@
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <img src="https://sebotics.com/wp-content/uploads/2021/10/Logo_Sebotics_neu.png" alt="SEBOTICS">
+        <img src="data:image/webp;base64,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" alt="SEBOTICS">
         <p>SEBOTICS<br>Bahnhofstrasse 2, 6048 Horw, Schweiz<br><a href="tel:+41415007552">041 500 75 52</a><br><a href="mailto:info@sebotics.com">info@sebotics.com</a></p>
       </div>
       <div class="foot-col"><h4>Roboter</h4>
@@ -696,6 +704,47 @@
     document.querySelectorAll('#mmenu a').forEach(function (a) {
       a.addEventListener('click', function () { document.body.classList.remove('menu-open'); });
     });
+
+    // --- Typewriter: cycles through phrases in the H1 gradient span ---
+    (function () {
+      var el = document.getElementById('typewriter');
+      if (!el) return;
+      var phrases = ['Ihr Team das, was zählt.', 'Ihre Kosten das, was sinkt.', 'Ihr Betrieb das, was läuft.'];
+      var pi = 0, ci = 0, deleting = false, pauseFrames = 0;
+      function tick() {
+        var phrase = phrases[pi];
+        if (pauseFrames > 0) { pauseFrames--; setTimeout(tick, 40); return; }
+        if (!deleting) {
+          ci++;
+          el.textContent = phrase.slice(0, ci);
+          if (ci === phrase.length) { deleting = true; pauseFrames = 60; }
+          setTimeout(tick, 55);
+        } else {
+          ci--;
+          el.textContent = phrase.slice(0, ci);
+          if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; pauseFrames = 8; }
+          setTimeout(tick, 28);
+        }
+      }
+      // Start after reveal animation
+      setTimeout(tick, 800);
+    })();
+
+    // --- Magnetic buttons ---
+    if (window.matchMedia('(hover: hover)').matches) {
+      document.querySelectorAll('.btn-primary, .btn-ghost').forEach(function (btn) {
+        btn.addEventListener('mousemove', function (e) {
+          var r = btn.getBoundingClientRect();
+          var x = e.clientX - r.left - r.width / 2;
+          var y = e.clientY - r.top - r.height / 2;
+          btn.style.transform = 'translate(' + (x * 0.22) + 'px, ' + (y * 0.22) + 'px)';
+        });
+        btn.addEventListener('mouseleave', function () {
+          btn.style.transform = '';
+        });
+      });
+    }
+
   });
 </script>
 
