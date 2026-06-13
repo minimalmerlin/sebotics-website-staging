@@ -232,11 +232,17 @@
       text-decoration: none; max-height: 0; overflow: hidden; opacity: 0; transition: 0.4s var(--ease); }
     .sol-tab.active .t-link { max-height: 30px; opacity: 1; }
     .sol-visual { position: relative; border-radius: 26px; overflow: hidden; aspect-ratio: 4 / 3.4;
-      border: 1px solid var(--b2); background: var(--s1); }
-    .sol-panel { position: absolute; inset: 0; opacity: 0; transform: scale(1.04); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+      border: 1px solid var(--b2); background: radial-gradient(circle at 50% 32%, #1a1a23, #0a0a0c 72%); }
+    .sol-panel { position: absolute; inset: 0; opacity: 0; transform: scale(1.04);
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
     .sol-panel.active { opacity: 1; transform: scale(1); }
-    .sol-panel img { width: 100%; height: 100%; object-fit: cover; }
-    .sol-panel .veil { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(5,5,8,0.85)); }
+    /* Warum: Produktbilder sind hochformatige Freisteller, daher contain + zentriert
+       statt cover (cover zoomt und schneidet an). max-Werte verhindern Upscaling-Unschaerfe. */
+    .sol-panel img { max-width: 72%; max-height: 74%; width: auto; height: auto; object-fit: contain;
+      filter: drop-shadow(0 26px 54px rgba(0,0,0,0.55)); }
+    .sol-panel .veil { position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(180deg, transparent 55%, rgba(5,5,8,0.78)); }
     .sol-panel .cap { position: absolute; left: 26px; right: 26px; bottom: 24px; }
     .sol-panel .cap .tag { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--acc-lt); }
     .sol-panel .cap .big { font-size: clamp(22px, 3vw, 30px); font-weight: 800; line-height: 1.1; margin-top: 8px; }
@@ -457,10 +463,10 @@
         </button>
       </div>
       <div class="sol-visual reveal d1" id="solVisual">
-        <div class="sol-panel active"><img src="https://sebotics.com/wp-content/uploads/2023/12/JunoBot-AX-6113-Sebotics-Lieferroboter-Liftanbindung.png" alt="Transportroboter" loading="lazy"><div class="veil"></div><div class="cap"><div class="tag">Transport &amp; Logistik</div><div class="big">Material fährt selbst.</div></div></div>
-        <div class="sol-panel"><img src="https://sebotics.com/wp-content/uploads/2024/12/tn70.png" alt="Reinigungsroboter" loading="lazy"><div class="veil"></div><div class="cap"><div class="tag">Reinigung &amp; Facility</div><div class="big">Saubere Flächen ohne Schichtplan.</div></div></div>
-        <div class="sol-panel"><img src="https://sebotics.com/wp-content/uploads/2022/11/servierroboter-bellabot-e1669060437585.webp" alt="Servierroboter" loading="lazy"><div class="veil"></div><div class="cap"><div class="tag">Gastronomie &amp; Hotellerie</div><div class="big">Das Team bleibt beim Gast.</div></div></div>
-        <div class="sol-panel"><img src="https://sebotics.com/wp-content/uploads/2025/04/callisto-Hotelroboter.png" alt="Healthcare-Roboter" loading="lazy"><div class="veil"></div><div class="cap"><div class="tag">Gesundheit &amp; Pflege</div><div class="big">Mehr Zeit für den Menschen.</div></div></div>
+        <div class="sol-panel active"><img src="https://sebotics.com/wp-content/uploads/2023/12/JunoBot-AX-6113-Sebotics-Lieferroboter-Liftanbindung.png" alt="Transportroboter JunoBot" loading="lazy"><div class="veil"></div><div class="cap"><div class="tag">Transport &amp; Logistik</div><div class="big">Material fährt selbst.</div></div></div>
+        <div class="sol-panel"><img src="https://sebotics.com/wp-content/uploads/2024/12/reinigungsroboter-tn70.png" alt="Reinigungsroboter TN70 Pro" loading="lazy"><div class="veil"></div><div class="cap"><div class="tag">Reinigung &amp; Facility</div><div class="big">Saubere Flächen ohne Schichtplan.</div></div></div>
+        <div class="sol-panel"><img src="https://sebotics.com/wp-content/uploads/2023/01/BellaBot-ga.png" alt="Servierroboter BellaBot" loading="lazy"><div class="veil"></div><div class="cap"><div class="tag">Gastronomie &amp; Hotellerie</div><div class="big">Das Team bleibt beim Gast.</div></div></div>
+        <div class="sol-panel"><img src="https://sebotics.com/wp-content/uploads/2025/04/calisto-scaled.webp" alt="Hotelroboter Callisto" loading="lazy"><div class="veil"></div><div class="cap"><div class="tag">Gesundheit &amp; Pflege</div><div class="big">Mehr Zeit für den Menschen.</div></div></div>
       </div>
     </div>
   </div>
