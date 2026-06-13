@@ -894,21 +894,24 @@
       requestAnimationFrame(function () { $$('.hero .reveal').forEach(function (el) { el.classList.add('in'); }); });
 
       var counted = false, statSec = $('.hero-stats');
+      function runCount() {
+        if (counted) return; counted = true;
+        $$('[data-count]').forEach(function (el) {
+          var target = +el.getAttribute('data-count');
+          if (RM) { el.textContent = target; return; }
+          var start = null;
+          function t(ts) { if (!start) start = ts; var p = Math.min((ts - start) / 1100, 1); el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target); if (p < 1) requestAnimationFrame(t); }
+          requestAnimationFrame(t);
+        });
+      }
       if (statSec) {
         var cio = new IntersectionObserver(function (entries) {
-          entries.forEach(function (en) {
-            if (en.isIntersecting && !counted) {
-              counted = true;
-              $$('[data-count]').forEach(function (el) {
-                var target = +el.getAttribute('data-count'), start = null;
-                if (RM) { el.textContent = target; return; }
-                function t(ts) { if (!start) start = ts; var p = Math.min((ts - start) / 1100, 1); el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target); if (p < 1) requestAnimationFrame(t); }
-                requestAnimationFrame(t);
-              });
-            }
-          });
-        }, { threshold: 0.5 });
+          entries.forEach(function (en) { if (en.isIntersecting) runCount(); });
+        }, { threshold: 0.1 });
         cio.observe(statSec);
+        // Sicherheitsnetz: Above-the-fold-Timing kann den Observer-Initial-Callback verpassen.
+        // Nach dem Boot pruefen und ausloesen, wenn die Stats sichtbar sind.
+        setTimeout(function () { if (!counted && statSec.getBoundingClientRect().top < window.innerHeight) runCount(); }, 1400);
       }
     })();
 
