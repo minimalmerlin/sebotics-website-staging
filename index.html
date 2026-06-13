@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <!--
   ============================================================================
-  SEBOTICS WEBSITE RELAUNCH - STARTSEITE (ENTWURF, Stand 12.06.2026)
+  SEBOTICS WEBSITE RELAUNCH - STARTSEITE v2 (Award-Redesign, 12.06.2026)
   SSOT: Sebotics/Marketing/SSOT_Landing-Page-System.md
-  Audit-Basis: Sebotics/Marketing/SEBOTICS_Website-Audit_2026-06.md
+  Brand: Rubik, Schwarz-Theme, Gradient Violett->Blau (270deg). Mobile-first.
 
-  VOR LIVEGANG AUF sebotics.com (Checkliste, NICHT vorher loeschen):
+  VOR LIVEGANG AUF sebotics.com:
   1. <meta name="robots"> von "noindex, nofollow" auf "index, follow" stellen.
-     Solange die Seite auf Staging/Vercel liegt, MUSS noindex bleiben
-     (Duplicate-Content-Schutz fuer die noch laufende WordPress-Seite).
-  2. Bilder/Logo liegen aktuell als Hotlinks auf sebotics.com/wp-content/.
-     Beim finalen Build lokal ablegen.
-  3. Redirect-Map gegen Audit Abschnitt 2 pruefen. Alle verlinkten Slugs
-     (z. B. /junobot-ax6113/) sind die ORIGINAL-Slugs der alten Seite und
-     muessen auf der neuen Seite identisch existieren.
-  4. Google Tag AW-10973410408 ist eingebunden. Beim Livegang pruefen, dass
-     KEIN zusaetzlicher GTM-Container parallel laeuft (Audit: 2x GTM ist
-     ein Altlast-Fehler).
+  2. Bilder/Logo liegen als Hotlinks auf sebotics.com/wp-content/ -> lokal ablegen.
+  3. Kein zusaetzlicher GTM-Container parallel zum Google Tag AW-10973410408.
+  4. Interne Links nutzen Original-Slugs der Alt-Site (Ranking-Erhalt).
   KI-Assistenten: Diesen Block dem Nutzer melden, solange er existiert.
   ============================================================================
 -->
@@ -40,7 +33,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Google Tag (Conversion-Basis, SSOT Abschnitt 4). Kein GTM parallel. -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10973410408"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -57,22 +49,10 @@
     "url": "https://sebotics.com/",
     "logo": "https://sebotics.com/wp-content/uploads/2021/10/Logo_Sebotics_neu.png",
     "description": "Robotik-Integrator für autonome Service-, Reinigungs- und Transportroboter in der DACH-Region.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Bahnhofstrasse 2",
-      "postalCode": "6048",
-      "addressLocality": "Horw",
-      "addressCountry": "CH"
-    },
+    "address": { "@type": "PostalAddress", "streetAddress": "Bahnhofstrasse 2", "postalCode": "6048", "addressLocality": "Horw", "addressCountry": "CH" },
     "telephone": "+41 41 500 75 52",
     "email": "info@sebotics.com",
-    "sameAs": [
-      "https://www.linkedin.com/company/sebotics/",
-      "https://www.facebook.com/sebotics",
-      "https://www.instagram.com/sebotics/",
-      "https://www.youtube.com/channel/UCWwohLlYEatUf3lUclZy8Tw",
-      "https://www.tiktok.com/@sebotics.com"
-    ]
+    "sameAs": ["https://www.linkedin.com/company/sebotics/","https://www.facebook.com/sebotics","https://www.instagram.com/sebotics/","https://www.youtube.com/channel/UCWwohLlYEatUf3lUclZy8Tw","https://www.tiktok.com/@sebotics.com"]
   }
   </script>
 
@@ -81,293 +61,288 @@
 
     :root {
       --bg: #000000;
-      --s1: #141414;
-      --s2: #0d0d0d;
+      --s1: #111114;
+      --s2: #0a0a0c;
       --b1: rgba(255,255,255,0.07);
-      --b2: rgba(255,255,255,0.12);
+      --b2: rgba(255,255,255,0.13);
       --t1: #FFFFFF;
-      --t2: #AAAAAA;
-      --t3: #888888;
-      --grad: linear-gradient(270deg, #702A7E, #2C6DB1);
-      --grad-lt: linear-gradient(270deg, #b06abf, #5b9fe8);
+      --t2: #B0B4BC;
+      --t3: #7e828c;
+      --grad: linear-gradient(115deg, #702A7E 0%, #2C6DB1 100%);
+      --grad-lt: linear-gradient(115deg, #b06abf 0%, #5b9fe8 100%);
       --acc: #2C6DB1;
       --acc-lt: #7ab4f0;
-      --acc-dim: rgba(44,109,177,0.12);
       --purple: #702A7E;
       --font: 'Rubik', sans-serif;
-      --max-w: 1200px;
-      --section-pad: 100px 60px;
+      --max-w: 1240px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    html { scroll-behavior: smooth; }
-
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--t1);
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+      font-family: var(--font); background: var(--bg); color: var(--t1);
+      font-size: 16px; font-weight: 400; line-height: 1.65;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
     }
+    body.menu-open { overflow: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
 
-    /* ── Navigation ── */
-    .top-nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 48px;
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--b1);
-    }
-    .top-nav .logo img { height: 22px; filter: brightness(0) invert(1); display: block; }
-    .top-nav .nav-links { display: flex; gap: 8px; list-style: none; align-items: center; }
-    .top-nav .nav-links a {
-      font-size: 13px; font-weight: 500; color: var(--t2);
-      text-decoration: none; text-transform: uppercase; letter-spacing: 2px;
-      padding: 6px 14px; border-radius: 20px; transition: color 0.3s;
-    }
-    .top-nav .nav-links a:hover { color: var(--t1); }
-    .top-nav .nav-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 9px 20px; background: var(--grad); color: #fff;
-      font-weight: 600; font-size: 14px; border-radius: 8px;
-      text-decoration: none; transition: opacity 0.3s; white-space: nowrap;
-    }
-    .top-nav .nav-cta:hover { opacity: 0.9; }
-    .burger {
-      display: none; background: none; border: 1px solid var(--b2);
-      border-radius: 8px; color: var(--t1); font-size: 20px;
-      padding: 6px 12px; cursor: pointer;
-    }
-    .mobile-menu {
-      display: none; position: fixed; top: 62px; left: 0; right: 0; z-index: 99;
-      background: rgba(0,0,0,0.96); border-bottom: 1px solid var(--b2);
-      padding: 12px 20px 20px;
-    }
-    .mobile-menu.open { display: block; }
-    .mobile-menu a {
-      display: block; padding: 12px 4px; color: var(--t1);
-      text-decoration: none; font-size: 16px; border-bottom: 1px solid var(--b1);
-    }
-    .mobile-menu a:last-child { border-bottom: none; }
+    /* Scroll progress bar */
+    .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; z-index: 200; background: var(--grad-lt); transition: width 0.1s linear; }
 
-    /* ── Hero ── */
-    .hero-section {
-      min-height: 78vh;
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 150px 60px 90px;
-      max-width: var(--max-w); margin: 0 auto; position: relative;
-    }
-    .hero-section .label {
-      font-size: 14px; font-weight: 500; letter-spacing: 3px;
-      text-transform: uppercase; color: var(--acc-lt); margin-bottom: 24px;
-    }
-    .hero-section h1 {
-      font-size: clamp(38px, 4.5vw, 62px);
-      font-weight: 800; line-height: 1.08; margin-bottom: 24px; max-width: 860px;
-    }
-    .hero-section h1 .grad-text { white-space: nowrap; }
-    .hero-section .subtitle { font-size: 18px; color: var(--t2); max-width: 640px; line-height: 1.7; }
-    .hero-ctas { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
-    .hero-section .hero-meta {
-      display: flex; gap: 40px; margin-top: 48px; padding-top: 30px;
-      border-top: 1px solid var(--b1); flex-wrap: wrap;
-    }
-    .hero-meta .meta-item { font-size: 12px; color: var(--t3); text-transform: uppercase; letter-spacing: 2px; }
-    .hero-meta .meta-value { font-size: 17px; font-weight: 600; color: var(--t1); margin-top: 4px; letter-spacing: 0; text-transform: none; }
+    /* Cursor glow (desktop) */
+    .glow { position: fixed; width: 480px; height: 480px; border-radius: 50%; pointer-events: none; z-index: 0;
+      background: radial-gradient(circle, rgba(44,109,177,0.13), transparent 62%); transform: translate(-50%, -50%);
+      left: 50%; top: 30%; transition: opacity 0.4s; mix-blend-mode: screen; }
+    @media (hover: none) { .glow { display: none; } }
 
-    /* ── Sections ── */
-    section { padding: var(--section-pad); max-width: var(--max-w); margin: 0 auto; }
-    section.dark-surface { background: var(--s2); max-width: 100%; }
-    section.dark-surface > .inner { max-width: var(--max-w); margin: 0 auto; padding: 0 60px; }
-    .section-label {
-      font-size: 14px; font-weight: 500; letter-spacing: 3px;
-      text-transform: uppercase; color: var(--acc-lt); margin-bottom: 16px;
-    }
-    section h2 { font-size: clamp(28px, 3vw, 42px); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
-    .section-intro { font-size: 17px; color: var(--t2); max-width: 680px; margin-bottom: 48px; line-height: 1.7; }
+    /* Nav */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px clamp(20px, 4vw, 48px); transition: padding 0.4s var(--ease), background 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent; }
+    .nav.scrolled { padding-top: 13px; padding-bottom: 13px; background: rgba(6,6,8,0.72);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--b1); }
+    .nav .logo img { height: 24px; filter: brightness(0) invert(1); }
+    .nav-links { display: flex; gap: 4px; list-style: none; align-items: center; }
+    .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--t2); text-decoration: none;
+      padding: 8px 16px; border-radius: 100px; transition: color 0.25s, background 0.25s; }
+    .nav-links a:hover { color: var(--t1); background: rgba(255,255,255,0.05); }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+    .nav-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px;
+      background: var(--grad); color: #fff; font-weight: 600; font-size: 14px; border-radius: 100px;
+      text-decoration: none; white-space: nowrap; position: relative; overflow: hidden;
+      box-shadow: 0 4px 24px rgba(44,109,177,0.3); transition: transform 0.3s var(--ease), box-shadow 0.3s; }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 30px rgba(112,42,126,0.45); }
+    .burger { display: none; background: none; border: 1px solid var(--b2); border-radius: 10px;
+      width: 44px; height: 44px; color: var(--t1); cursor: pointer; align-items: center; justify-content: center; }
+    .burger span { display: block; width: 18px; height: 2px; background: currentColor; position: relative; transition: 0.3s; }
+    .burger span::before, .burger span::after { content: ''; position: absolute; left: 0; width: 18px; height: 2px; background: currentColor; transition: 0.3s; }
+    .burger span::before { top: -6px; } .burger span::after { top: 6px; }
+    body.menu-open .burger span { background: transparent; }
+    body.menu-open .burger span::before { top: 0; transform: rotate(45deg); }
+    body.menu-open .burger span::after { top: 0; transform: rotate(-45deg); }
 
-    /* ── Logo-Leiste ── */
-    .logo-strip {
-      display: flex; flex-wrap: wrap; gap: 28px 44px;
-      align-items: center; justify-content: center;
-      padding: 36px 60px; max-width: var(--max-w); margin: 0 auto;
-      border-top: 1px solid var(--b1); border-bottom: 1px solid var(--b1);
-    }
-    .logo-strip img {
-      height: 52px; width: auto; opacity: 0.55;
-      filter: grayscale(1) brightness(1.6);
-      transition: opacity 0.3s;
-    }
-    .logo-strip img:hover { opacity: 1; }
-    .logo-strip .strip-label {
-      width: 100%; text-align: center; font-size: 12px; color: var(--t3);
-      text-transform: uppercase; letter-spacing: 3px; margin-bottom: 4px;
-    }
+    /* Mobile menu overlay */
+    .m-menu { position: fixed; inset: 0; z-index: 99; background: rgba(5,5,7,0.97);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 40px;
+      opacity: 0; visibility: hidden; transition: opacity 0.4s, visibility 0.4s; }
+    body.menu-open .m-menu { opacity: 1; visibility: visible; }
+    .m-menu a { font-size: 30px; font-weight: 700; color: var(--t1); text-decoration: none; padding: 10px 0;
+      border-bottom: 1px solid var(--b1); transition: color 0.25s; }
+    .m-menu a:hover { color: var(--acc-lt); }
+    .m-menu .m-cta { margin-top: 28px; background: var(--grad); border-radius: 100px; text-align: center;
+      border: none; font-size: 18px; padding: 18px; box-shadow: 0 6px 30px rgba(44,109,177,0.35); }
 
-    /* ── Cards ── */
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .card {
-      background: var(--s1); border: 1px solid var(--b2);
-      border-radius: 12px; padding: 26px 28px;
-      transition: border-color 0.3s, transform 0.3s;
-      display: flex; flex-direction: column;
-    }
-    .card:hover { border-color: rgba(91,159,232,0.3); transform: translateY(-2px); }
-    .card.accent-blue { border-left: 3px solid rgba(91,159,232,0.5); }
-    .card.accent-purple { border-left: 3px solid rgba(112,42,126,0.5); }
-    .card .card-tag {
-      font-size: 12px; font-weight: 500; color: var(--acc-lt);
-      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
-    }
-    .card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; line-height: 1.3; }
-    .card p { font-size: 15px; color: var(--t2); line-height: 1.6; }
-    .card .card-link {
-      margin-top: auto; padding-top: 16px;
-      font-size: 14px; font-weight: 600; color: var(--acc-lt); text-decoration: none;
-    }
-    .card .card-link:hover { color: var(--t1); }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 4px; }
-    .tag {
-      font-size: 13px; font-weight: 500; padding: 3px 12px; border-radius: 20px;
-      border: 1px solid var(--b2); color: var(--t2); display: inline-block; text-decoration: none;
-    }
-    a.tag:hover { color: var(--t1); border-color: var(--acc); }
+    /* Layout helpers */
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600;
+      letter-spacing: 2.5px; text-transform: uppercase; color: var(--acc-lt); }
+    .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--acc-lt); opacity: 0.6; }
+    .grad-text { background: var(--grad-lt); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    section { position: relative; z-index: 1; }
 
-    /* ── Timeline ── */
-    .timeline { display: flex; flex-direction: column; position: relative; padding-left: 40px; }
-    .timeline::before {
-      content: ''; position: absolute; left: 15px; top: 8px; bottom: 8px;
-      width: 2px; background: var(--grad);
-    }
-    .timeline-item { position: relative; padding: 0 0 36px 24px; }
-    .timeline-item::before {
-      content: ''; position: absolute; left: -30px; top: 6px;
-      width: 12px; height: 12px; border-radius: 50%; background: var(--grad);
-    }
-    .timeline-item .timeline-label {
-      font-size: 12px; color: var(--acc-lt); text-transform: uppercase;
-      letter-spacing: 2px; margin-bottom: 6px;
-    }
-    .timeline-item h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
-    .timeline-item p { color: var(--t2); font-size: 15px; max-width: 560px; }
+    /* ── HERO ── */
+    .hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 0 80px; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.5; will-change: transform; }
+    .orb.a { width: 520px; height: 520px; background: radial-gradient(circle, #2C6DB1, transparent 68%); top: -120px; right: -80px; animation: float1 18s var(--ease) infinite; }
+    .orb.b { width: 460px; height: 460px; background: radial-gradient(circle, #702A7E, transparent 68%); bottom: -140px; left: -100px; animation: float2 22s var(--ease) infinite; }
+    .orb.c { width: 300px; height: 300px; background: radial-gradient(circle, #2C6DB1, transparent 70%); top: 40%; left: 55%; opacity: 0.28; animation: float1 26s var(--ease) infinite reverse; }
+    @keyframes float1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-40px,50px) scale(1.08); } }
+    @keyframes float2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(60px,-40px) scale(1.12); } }
+    .grid-overlay { position: absolute; inset: 0; z-index: 1; opacity: 0.5;
+      background-image: linear-gradient(var(--b1) 1px, transparent 1px), linear-gradient(90deg, var(--b1) 1px, transparent 1px);
+      background-size: 64px 64px; mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 30%, transparent 75%); }
+    .hero .wrap { position: relative; z-index: 2; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px 7px 12px;
+      border: 1px solid var(--b2); border-radius: 100px; font-size: 13px; color: var(--t2); margin-bottom: 30px;
+      background: rgba(255,255,255,0.02); }
+    .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #46d18a; box-shadow: 0 0 10px #46d18a; }
+    .hero h1 { font-size: clamp(40px, 7vw, 88px); font-weight: 800; line-height: 1.02; letter-spacing: -0.02em;
+      max-width: 16ch; margin-bottom: 28px; }
+    .hero .sub { font-size: clamp(17px, 2.2vw, 21px); color: var(--t2); max-width: 56ch; line-height: 1.6; }
+    .hero-ctas { display: flex; gap: 14px; margin-top: 40px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 17px 34px; background: var(--grad);
+      color: #fff; font-weight: 600; font-size: 16px; border: none; border-radius: 100px; text-decoration: none;
+      box-shadow: 0 8px 34px rgba(44,109,177,0.34); transition: transform 0.3s var(--ease), box-shadow 0.3s; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 44px rgba(112,42,126,0.5); }
+    .btn-primary .arrow { transition: transform 0.3s var(--ease); }
+    .btn-primary:hover .arrow { transform: translateX(4px); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 10px; padding: 17px 30px; background: transparent;
+      color: var(--t1); font-weight: 600; font-size: 16px; border: 1px solid var(--b2); border-radius: 100px;
+      text-decoration: none; transition: border-color 0.3s, background 0.3s; }
+    .btn-ghost:hover { border-color: var(--acc-lt); background: rgba(255,255,255,0.03); }
+    .hero-stats { display: flex; gap: clamp(28px, 5vw, 64px); margin-top: 64px; flex-wrap: wrap; }
+    .hero-stat .num { font-size: clamp(30px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+    .hero-stat .lbl { font-size: 13px; color: var(--t3); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 10px; }
+    .scroll-hint { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); z-index: 2;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--t3); display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .scroll-hint .line { width: 1px; height: 40px; background: linear-gradient(var(--acc-lt), transparent); animation: scrolldot 2s var(--ease) infinite; }
+    @keyframes scrolldot { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
 
-    /* ── Highlight / FAQ ── */
-    .highlight-box {
-      background: rgba(44,109,177,0.05); border: 1px solid rgba(91,159,232,0.15);
-      border-radius: 12px; padding: 28px 32px; margin: 32px 0;
-    }
-    .highlight-box h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-    .highlight-box p { color: var(--t2); }
+    /* ── Logo marquee ── */
+    .marquee-sec { padding: 48px 0; border-top: 1px solid var(--b1); border-bottom: 1px solid var(--b1); background: var(--s2); overflow: hidden; }
+    .marquee-label { text-align: center; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--t3); margin-bottom: 32px; }
+    .marquee { display: flex; gap: 64px; width: max-content; animation: scrollx 38s linear infinite; align-items: center; }
+    .marquee-sec:hover .marquee { animation-play-state: paused; }
+    .marquee img { height: 46px; width: auto; opacity: 0.5; filter: grayscale(1) brightness(1.7); transition: opacity 0.3s; }
+    .marquee img:hover { opacity: 1; }
+    @keyframes scrollx { to { transform: translateX(-50%); } }
+
+    /* ── Section shell ── */
+    .sec { padding: clamp(80px, 11vw, 150px) 0; }
+    .sec-head { max-width: 720px; margin-bottom: 56px; }
+    .sec-head h2 { font-size: clamp(30px, 4.4vw, 52px); font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; margin: 18px 0 18px; }
+    .sec-head p { font-size: 18px; color: var(--t2); }
+
+    /* ── Problem (bento) ── */
+    .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .bento .cell { background: var(--s1); border: 1px solid var(--b1); border-radius: 22px; padding: 34px;
+      position: relative; overflow: hidden; transition: border-color 0.4s, transform 0.4s var(--ease); }
+    .bento .cell:hover { border-color: var(--b2); transform: translateY(-4px); }
+    .bento .cell::after { content: ''; position: absolute; inset: 0; background: var(--grad);
+      opacity: 0; transition: opacity 0.4s; mask: linear-gradient(#000,#000) padding-box, linear-gradient(#000,#000);
+      -webkit-mask-composite: xor; mask-composite: exclude; padding: 1px; border-radius: 22px; pointer-events: none; }
+    .bento .cell:hover::after { opacity: 0.5; }
+    .cell .ic { width: 52px; height: 52px; border-radius: 14px; background: rgba(44,109,177,0.12);
+      border: 1px solid rgba(91,159,232,0.25); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 22px; }
+    .cell h3 { font-size: 21px; font-weight: 700; margin-bottom: 12px; line-height: 1.25; }
+    .cell p { color: var(--t2); font-size: 15.5px; }
+
+    /* ── Solutions tabs ── */
+    .sol-wrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center; }
+    .sol-tabs { display: flex; flex-direction: column; gap: 6px; }
+    .sol-tab { text-align: left; background: none; border: none; cursor: pointer; padding: 22px 24px;
+      border-radius: 16px; border: 1px solid transparent; transition: 0.35s var(--ease); position: relative; }
+    .sol-tab:hover { background: rgba(255,255,255,0.03); }
+    .sol-tab.active { background: var(--s1); border-color: var(--b2); }
+    .sol-tab .t-top { display: flex; align-items: center; gap: 12px; }
+    .sol-tab .t-num { font-size: 12px; font-weight: 600; color: var(--acc-lt); letter-spacing: 1px; }
+    .sol-tab h3 { font-size: 21px; font-weight: 700; color: var(--t2); transition: color 0.3s; }
+    .sol-tab.active h3 { color: var(--t1); }
+    .sol-tab p { font-size: 15px; color: var(--t3); margin-top: 8px; max-height: 0; overflow: hidden;
+      opacity: 0; transition: max-height 0.4s var(--ease), opacity 0.4s, margin 0.4s; }
+    .sol-tab.active p { max-height: 100px; opacity: 1; margin-top: 12px; }
+    .sol-tab .t-link { display: inline-block; margin-top: 14px; font-size: 14px; font-weight: 600; color: var(--acc-lt);
+      text-decoration: none; max-height: 0; overflow: hidden; opacity: 0; transition: 0.4s var(--ease); }
+    .sol-tab.active .t-link { max-height: 30px; opacity: 1; }
+    .sol-visual { position: relative; border-radius: 26px; overflow: hidden; aspect-ratio: 4 / 3.4;
+      border: 1px solid var(--b2); background: var(--s1); }
+    .sol-panel { position: absolute; inset: 0; opacity: 0; transform: scale(1.04); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+    .sol-panel.active { opacity: 1; transform: scale(1); }
+    .sol-panel img { width: 100%; height: 100%; object-fit: cover; }
+    .sol-panel .veil { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(5,5,8,0.85)); }
+    .sol-panel .cap { position: absolute; left: 26px; right: 26px; bottom: 24px; }
+    .sol-panel .cap .tag { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--acc-lt); }
+    .sol-panel .cap .big { font-size: clamp(22px, 3vw, 30px); font-weight: 800; line-height: 1.1; margin-top: 8px; }
+
+    /* ── Robots showcase ── */
+    .cat-rail { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .cat { display: flex; flex-direction: column; min-height: 280px; background: var(--s1); border: 1px solid var(--b1);
+      border-radius: 20px; padding: 28px 24px; text-decoration: none; transition: 0.4s var(--ease); position: relative; overflow: hidden; }
+    .cat:hover { border-color: var(--b2); transform: translateY(-5px); background: #15151a; }
+    .cat .c-glow { position: absolute; top: -40%; right: -40%; width: 200px; height: 200px; border-radius: 50%;
+      background: var(--grad); opacity: 0; filter: blur(40px); transition: opacity 0.5s; }
+    .cat:hover .c-glow { opacity: 0.28; }
+    .cat .c-num { font-size: 12px; color: var(--t3); letter-spacing: 1px; }
+    .cat h3 { font-size: 19px; font-weight: 700; margin: 14px 0 10px; position: relative; }
+    .cat p { font-size: 14px; color: var(--t2); position: relative; flex-grow: 1; }
+    .cat .c-go { margin-top: 18px; font-size: 13px; font-weight: 600; color: var(--acc-lt); display: inline-flex; align-items: center; gap: 6px; }
+    .cat .c-go .arrow { transition: transform 0.3s var(--ease); }
+    .cat:hover .c-go .arrow { transform: translateX(4px); }
+    .robots-cta { margin-top: 28px; }
+
+    /* ── Process timeline ── */
+    .proc { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; margin-top: 20px; }
+    .proc::before { content: ''; position: absolute; top: 26px; left: 8%; right: 8%; height: 1px; background: linear-gradient(90deg, transparent, var(--b2), transparent); }
+    .step { padding: 0 24px; position: relative; }
+    .step .knob { width: 54px; height: 54px; border-radius: 50%; background: var(--s1); border: 1px solid var(--b2);
+      display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; position: relative; z-index: 1;
+      background-image: var(--grad); }
+    .step .s-when { font-size: 12px; color: var(--acc-lt); letter-spacing: 1px; text-transform: uppercase; margin: 22px 0 8px; }
+    .step h3 { font-size: 21px; font-weight: 700; margin-bottom: 10px; }
+    .step p { color: var(--t2); font-size: 15px; }
+
+    /* ── Quote / CTA band ── */
+    .band { position: relative; border-radius: 30px; overflow: hidden; border: 1px solid var(--b2);
+      background: linear-gradient(135deg, rgba(112,42,126,0.18), rgba(44,109,177,0.14)); padding: clamp(48px, 7vw, 86px); text-align: center; }
+    .band::before { content: ''; position: absolute; inset: 0; z-index: 0; opacity: 0.6;
+      background: radial-gradient(circle at 70% 20%, rgba(44,109,177,0.3), transparent 55%), radial-gradient(circle at 20% 90%, rgba(112,42,126,0.3), transparent 55%); }
+    .band > * { position: relative; z-index: 1; }
+    .band h2 { font-size: clamp(28px, 4.4vw, 50px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; max-width: 20ch; margin: 16px auto 18px; }
+    .band p { font-size: 18px; color: var(--t2); max-width: 50ch; margin: 0 auto 36px; }
+    .band .contact { margin-top: 30px; color: var(--t3); font-size: 15px; }
+    .band .contact a { color: var(--acc-lt); text-decoration: none; font-weight: 600; }
+
+    /* ── FAQ ── */
+    .faq-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+    .faq-list { border-top: 1px solid var(--b1); }
     .faq-item { border-bottom: 1px solid var(--b1); }
-    .faq-item summary {
-      cursor: pointer; list-style: none; padding: 20px 0;
-      font-size: 17px; font-weight: 600; display: flex; justify-content: space-between; gap: 16px;
-    }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; color: var(--acc-lt); font-weight: 700; font-size: 20px; }
-    .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item .faq-body { padding: 0 0 22px; color: var(--t2); font-size: 15px; max-width: 720px; }
-
-    /* ── Buttons ── */
-    .btn-grad {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 32px; background: var(--grad); color: #fff;
-      font-family: var(--font); font-weight: 600; font-size: 15px;
-      border: none; border-radius: 8px; cursor: pointer;
-      text-decoration: none; transition: opacity 0.3s;
-    }
-    .btn-grad:hover { opacity: 0.9; }
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 32px; background: transparent; color: var(--t1);
-      font-family: var(--font); font-weight: 600; font-size: 15px;
-      border: 1px solid var(--b2); border-radius: 8px; cursor: pointer;
-      text-decoration: none; transition: border-color 0.3s;
-    }
-    .btn-ghost:hover { border-color: var(--acc); }
-
-    .grad-text {
-      background: var(--grad-lt);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .check-list { list-style: none; padding: 0; }
-    .check-list li {
-      padding: 10px 0 10px 28px; position: relative; color: var(--t2);
-      font-size: 15px; border-bottom: 1px solid var(--b1);
-    }
-    .check-list li:last-child { border-bottom: none; }
-    .check-list li::before { content: '\2713'; position: absolute; left: 0; color: var(--acc-lt); font-weight: 700; }
-    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-
-    /* ── Schluss-CTA ── */
-    .final-cta { text-align: center; }
-    .final-cta h2 { max-width: 760px; margin-left: auto; margin-right: auto; }
-    .final-cta .section-intro { margin-left: auto; margin-right: auto; margin-bottom: 36px; }
-    .contact-line { margin-top: 36px; color: var(--t3); font-size: 15px; }
-    .contact-line a { color: var(--acc-lt); text-decoration: none; font-weight: 600; }
-    .contact-line a:hover { color: var(--t1); }
+    .faq-q { width: 100%; text-align: left; background: none; border: none; cursor: pointer; color: var(--t1);
+      font-family: var(--font); font-size: 18px; font-weight: 600; padding: 24px 0; display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+    .faq-q .pm { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--b2);
+      display: flex; align-items: center; justify-content: center; transition: 0.3s; font-weight: 400; }
+    .faq-item.open .faq-q .pm { background: var(--grad); border-color: transparent; transform: rotate(135deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.45s var(--ease); }
+    .faq-a p { color: var(--t2); font-size: 15.5px; padding: 0 40px 26px 0; }
 
     /* ── Footer ── */
-    footer { border-top: 1px solid var(--b1); }
-    .footer-inner {
-      max-width: var(--max-w); margin: 0 auto; padding: 48px 60px;
-      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
-    }
-    .footer-inner img { height: 18px; filter: brightness(0) invert(1); opacity: 0.6; }
-    .footer-inner p, .footer-inner a { font-size: 14px; color: var(--t3); text-decoration: none; line-height: 2; }
-    .footer-inner a:hover { color: var(--t1); }
-    .footer-inner h4 {
-      font-size: 12px; color: var(--t2); text-transform: uppercase;
-      letter-spacing: 2px; margin-bottom: 10px; font-weight: 600;
-    }
-    .footer-bottom {
-      border-top: 1px solid var(--b1); padding: 18px 60px;
-      max-width: var(--max-w); margin: 0 auto;
-      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-      font-size: 13px; color: var(--t3);
-    }
-    .footer-bottom a { color: var(--t3); text-decoration: none; margin-right: 16px; }
-    .footer-bottom a:hover { color: var(--t1); }
+    footer { border-top: 1px solid var(--b1); padding: 70px 0 36px; background: var(--s2); }
+    .foot-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+    .foot-brand img { height: 22px; filter: brightness(0) invert(1); opacity: 0.85; margin-bottom: 18px; }
+    .foot-brand p { font-size: 14px; color: var(--t3); line-height: 1.9; }
+    .foot-brand a { color: var(--t2); text-decoration: none; }
+    .foot-col h4 { font-size: 12px; color: var(--t2); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; font-weight: 600; }
+    .foot-col a { display: block; font-size: 14.5px; color: var(--t3); text-decoration: none; line-height: 2.1; transition: color 0.25s; }
+    .foot-col a:hover { color: var(--t1); }
+    .foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--b1); font-size: 13px; color: var(--t3); }
+    .foot-bottom a { color: var(--t3); text-decoration: none; margin-right: 18px; }
+    .foot-bottom a:hover { color: var(--t1); }
 
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    /* ── Reveal ── */
+    .reveal { opacity: 0; transform: translateY(34px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal.d1 { transition-delay: 0.08s; } .reveal.d2 { transition-delay: 0.16s; }
+    .reveal.d3 { transition-delay: 0.24s; } .reveal.d4 { transition-delay: 0.32s; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .orb, .marquee, .scroll-hint .line { animation: none; }
+    }
 
+    /* ── Responsive ── */
     @media (max-width: 1024px) {
-      :root { --section-pad: 80px 40px; }
-      .grid-3 { grid-template-columns: 1fr 1fr; }
-      .split { gap: 40px; }
-      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .sol-wrap { grid-template-columns: 1fr; gap: 32px; }
+      .cat-rail { grid-template-columns: repeat(2, 1fr); }
+      .faq-grid { grid-template-columns: 1fr; gap: 28px; }
+      .foot-top { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
-    @media (max-width: 768px) {
-      :root { --section-pad: 60px 20px; }
-      .top-nav { padding: 12px 16px; }
-      .top-nav .nav-links { display: none; }
-      .burger { display: block; }
-      .hero-section { padding: 120px 20px 60px; min-height: 60vh; }
-      .grid-2, .grid-3 { grid-template-columns: 1fr; }
-      .split { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr; padding: 40px 20px; }
-      .footer-bottom { padding: 16px 20px; }
-      .logo-strip { padding: 28px 20px; gap: 20px 28px; }
-      .logo-strip img { height: 40px; }
-      .hero-section .hero-meta { gap: 24px; }
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .nav .nav-cta { display: none; }
+      .burger { display: flex; }
+      .bento { grid-template-columns: 1fr; }
+      .proc { grid-template-columns: 1fr; gap: 36px; }
+      .proc::before { display: none; }
+      .cat-rail { grid-template-columns: 1fr; }
+      .foot-top { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding: 130px 0 70px; }
+      .hero-stats { gap: 28px 36px; }
+      .scroll-hint { display: none; }
     }
   </style>
 </head>
 <body>
 
-<nav class="top-nav">
+<div class="progress" id="progress"></div>
+<div class="glow" id="glow"></div>
+
+<nav class="nav" id="nav">
   <a class="logo" href="/" aria-label="SEBOTICS Startseite">
     <img src="https://sebotics.com/wp-content/uploads/2021/10/Logo_Sebotics_neu.png" alt="SEBOTICS">
   </a>
@@ -377,355 +352,336 @@
     <li><a href="#ablauf">Ablauf</a></li>
     <li><a href="#referenzen">Referenzen</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
   </ul>
-  <div style="display:flex; align-items:center; gap:12px;">
+  <div class="nav-right">
     <a class="nav-cta" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen</a>
-    <button class="burger" aria-label="Menü öffnen" onclick="document.getElementById('mmenu').classList.toggle('open')">&#9776;</button>
+    <button class="burger" id="burger" aria-label="Menü"><span></span></button>
   </div>
 </nav>
-<div class="mobile-menu" id="mmenu">
+
+<div class="m-menu" id="mmenu">
   <a href="/serviceroboter-ubersicht/">Roboter</a>
   <a href="#loesungen">Lösungen</a>
   <a href="#ablauf">Ablauf</a>
   <a href="#referenzen">Referenzen</a>
   <a href="#faq">FAQ</a>
-  <a href="#kontakt">Kontakt</a>
+  <a class="m-cta" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen</a>
 </div>
 
-<header class="hero-section">
-  <div class="label">Robotik-Integrator · Schweiz &amp; DACH</div>
-  <h1>Ihr Team gehört zu Gästen, Patienten und Maschinen. <span class="grad-text">Nicht auf Laufwege.</span></h1>
-  <p class="subtitle">SEBOTICS integriert autonome Roboter für Transport, Reinigung und Service. Beratung, Integration und Support aus einer Hand, von der Standort-Analyse bis zum laufenden Betrieb.</p>
-  <div class="hero-ctas">
-    <a class="btn-grad" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen &rarr;</a>
-    <a class="btn-ghost" href="#roboter">Roboter ansehen</a>
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="orb a" data-par="0.18"></div>
+    <div class="orb b" data-par="0.28"></div>
+    <div class="orb c" data-par="0.12"></div>
   </div>
-  <div class="hero-meta">
-    <div class="meta-item">Einsatz<div class="meta-value">7 Tage / Woche</div></div>
-    <div class="meta-item">Amortisation<div class="meta-value">unter 24 Monaten</div></div>
-    <div class="meta-item">Go-Live<div class="meta-value">60-Tage-Produktivgarantie</div></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-badge reveal"><span class="dot"></span> Robotik-Integrator · Schweiz &amp; DACH</div>
+    <h1 class="reveal d1">Ihr Team gehört zu Menschen. <span class="grad-text">Nicht auf den Laufweg.</span></h1>
+    <p class="sub reveal d2">SEBOTICS integriert autonome Roboter für Transport, Reinigung und Service. Beratung, Integration und Support aus einer Hand, von der Standort-Analyse bis zum laufenden Betrieb.</p>
+    <div class="hero-ctas reveal d3">
+      <a class="btn-primary" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen <span class="arrow">&rarr;</span></a>
+      <a class="btn-ghost" href="/serviceroboter-ubersicht/">Roboter ansehen</a>
+    </div>
+    <div class="hero-stats reveal d4">
+      <div class="hero-stat"><div class="num"><span data-count="7">0</span>&#8201;Tage</div><div class="lbl">Im Einsatz pro Woche</div></div>
+      <div class="hero-stat"><div class="num">&lt;&#8201;<span data-count="24">0</span>&#8201;Mt.</div><div class="lbl">Typische Amortisation</div></div>
+      <div class="hero-stat"><div class="num"><span data-count="60">0</span>&#8201;Tage</div><div class="lbl">Produktivgarantie</div></div>
+    </div>
   </div>
+  <div class="scroll-hint" aria-hidden="true"><span class="line"></span>Scrollen</div>
 </header>
 
-<!-- Logos: Hotlinks auf bestehende sebotics.com-Assets, beim finalen Build lokal ablegen -->
-<div class="logo-strip" aria-label="Referenzkunden">
-  <div class="strip-label">Im Einsatz bei</div>
-  <img src="https://sebotics.com/wp-content/uploads/2025/05/roche-sebotics.png" alt="Roche" loading="lazy">
-  <img src="https://sebotics.com/wp-content/uploads/2025/05/redbull-sebotics.png" alt="Red Bull" loading="lazy">
-  <img src="https://sebotics.com/wp-content/uploads/2025/05/schweizer-armee-sebotics.png" alt="Schweizer Armee" loading="lazy">
-  <img src="https://sebotics.com/wp-content/uploads/2023/12/Logo-The-Dolder-Grand-Sebotics-Referenz-1-150x150.png" alt="The Dolder Grand" loading="lazy">
-  <img src="https://sebotics.com/wp-content/uploads/2025/05/Raiffeisen-sebotics.png" alt="Raiffeisen" loading="lazy">
-  <img src="https://sebotics.com/wp-content/uploads/2025/05/edeka-sebotics.png" alt="Edeka" loading="lazy">
-  <img src="https://sebotics.com/wp-content/uploads/2025/05/ovomaltine-sebotics.png" alt="Ovomaltine" loading="lazy">
-  <img src="https://sebotics.com/wp-content/uploads/2025/05/thermoplan-sebotics.png" alt="Thermoplan" loading="lazy">
-  <img src="https://sebotics.com/wp-content/uploads/2023/12/Logo-Verkehrshaus-Luzern-Sebotics-Referenz-1-150x150.png" alt="Verkehrshaus Luzern" loading="lazy">
-</div>
+<!-- LOGOS -->
+<section class="marquee-sec" aria-label="Referenzkunden">
+  <div class="marquee-label">Im Einsatz bei führenden Unternehmen</div>
+  <div class="marquee" id="marquee">
+    <img src="https://sebotics.com/wp-content/uploads/2025/05/roche-sebotics.png" alt="Roche">
+    <img src="https://sebotics.com/wp-content/uploads/2025/05/redbull-sebotics.png" alt="Red Bull">
+    <img src="https://sebotics.com/wp-content/uploads/2025/05/schweizer-armee-sebotics.png" alt="Schweizer Armee">
+    <img src="https://sebotics.com/wp-content/uploads/2023/12/Logo-The-Dolder-Grand-Sebotics-Referenz-1-150x150.png" alt="The Dolder Grand">
+    <img src="https://sebotics.com/wp-content/uploads/2025/05/Raiffeisen-sebotics.png" alt="Raiffeisen">
+    <img src="https://sebotics.com/wp-content/uploads/2025/05/edeka-sebotics.png" alt="Edeka">
+    <img src="https://sebotics.com/wp-content/uploads/2025/05/ovomaltine-sebotics.png" alt="Ovomaltine">
+    <img src="https://sebotics.com/wp-content/uploads/2025/05/thermoplan-sebotics.png" alt="Thermoplan">
+    <img src="https://sebotics.com/wp-content/uploads/2023/12/Logo-Verkehrshaus-Luzern-Sebotics-Referenz-1-150x150.png" alt="Verkehrshaus Luzern">
+  </div>
+</section>
 
-<main>
-
-<section id="problem">
-  <div class="section-label">Das Problem</div>
-  <h2>Personalmangel verschwindet nicht. Die Arbeit auch nicht.</h2>
-  <p class="section-intro">Ob Produktionshalle, Hotel, Klinik oder Facility Management: Qualifizierte Leute sind knapp, und ein grosser Teil ihrer Zeit geht für Aufgaben drauf, die kein Mensch machen muss.</p>
-  <div class="grid-3">
-    <div class="card accent-blue fade-in">
-      <h3>Teure Zeit auf dem Laufweg</h3>
-      <p>Fachkräfte transportieren Material, Wäsche oder Geschirr durchs Haus, statt dort zu arbeiten, wo ihre Qualifikation Wert schafft.</p>
+<!-- PROBLEM -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Die Ausgangslage</span>
+      <h2>Personalmangel verschwindet nicht. Die Arbeit auch nicht.</h2>
+      <p>Ob Produktionshalle, Hotel, Klinik oder Facility Management: Qualifizierte Leute sind knapp, und ein grosser Teil ihrer Zeit geht für Aufgaben drauf, die kein Mensch machen muss.</p>
     </div>
-    <div class="card accent-blue fade-in">
-      <h3>Reinigung frisst Schichten</h3>
-      <p>Grosse Flächen, tägliche Frequenz, steigende Lohnkosten. Manuelle Reinigung skaliert nicht, und offene Stellen bleiben unbesetzt.</p>
-    </div>
-    <div class="card accent-blue fade-in">
-      <h3>Service unter Druck</h3>
-      <p>In Stosszeiten fehlen die Hände. Wartezeiten steigen, die Qualität schwankt, das Team brennt aus.</p>
+    <div class="bento">
+      <div class="cell reveal d1"><div class="ic">&#128694;</div><h3>Teure Zeit auf dem Laufweg</h3><p>Fachkräfte transportieren Material, Wäsche oder Geschirr durchs Haus, statt dort zu arbeiten, wo ihre Qualifikation Wert schafft.</p></div>
+      <div class="cell reveal d2"><div class="ic">&#129529;</div><h3>Reinigung frisst Schichten</h3><p>Grosse Flächen, tägliche Frequenz, steigende Lohnkosten. Manuelle Reinigung skaliert nicht, und offene Stellen bleiben unbesetzt.</p></div>
+      <div class="cell reveal d3"><div class="ic">&#9203;</div><h3>Service unter Druck</h3><p>In Stosszeiten fehlen die Hände. Wartezeiten steigen, die Qualität schwankt, das Team brennt aus.</p></div>
     </div>
   </div>
 </section>
 
-<section class="dark-surface" id="loesungen">
-  <div class="inner">
-    <div class="section-label">Die Lösung</div>
-    <h2>Roboter, die heute anfangen. Nicht in fünf Jahren.</h2>
-    <p class="section-intro">Wir liefern keine Zukunftsvisionen, sondern Geräte, die seit Jahren im Alltag laufen. SEBOTICS wählt das passende Modell, integriert es in Ihre Abläufe und betreut den Betrieb.</p>
-    <div class="grid-2">
-      <div class="card accent-purple fade-in">
-        <div class="card-tag">Transport &amp; Logistik</div>
-        <h3>Material fährt selbst</h3>
-        <p>Autonome Transportroboter bewegen Rohstoffe, Bauteile und Fertigware von Station zu Station, bis 600 kg, auf Wunsch mit Liftanbindung über Etagen hinweg.</p>
-        <a class="card-link" href="/roboter-im-lager-und-logistik/">Lösung für Lager &amp; Industrie &rarr;</a>
-      </div>
-      <div class="card accent-purple fade-in">
-        <div class="card-tag">Reinigung</div>
-        <h3>Saubere Flächen ohne Schichtplan</h3>
-        <p>Reinigungsroboter schrubben, saugen und wischen täglich dieselbe Qualität, vom Büro bis zur Industriehalle, dokumentiert per Report.</p>
-        <a class="card-link" href="/reinigungsroboter-kaufen/">Lösung für Reinigung &amp; Facility &rarr;</a>
-      </div>
-      <div class="card accent-purple fade-in">
-        <div class="card-tag">Gastronomie &amp; Hotellerie</div>
-        <h3>Service-Unterstützung in Stosszeiten</h3>
-        <p>Servier- und Hotelroboter bringen Speisen, räumen ab und liefern aufs Zimmer. Ihr Team bleibt beim Gast.</p>
-        <a class="card-link" href="/roboter-in-der-gastronomie/">Lösung für Gastro &amp; Hotel &rarr;</a>
-      </div>
-      <div class="card accent-purple fade-in">
-        <div class="card-tag">Gesundheit &amp; Pflege</div>
-        <h3>Mehr Zeit für den Menschen</h3>
-        <p>Transport von Wäsche, Material und Mahlzeiten in Kliniken und Pflegeeinrichtungen, damit Pflegekräfte pflegen statt schieben.</p>
-        <a class="card-link" href="/roboter-im-gesundheitsbereich/">Lösung für Gesundheit &amp; Pflege &rarr;</a>
-      </div>
+<!-- SOLUTIONS (tabs) -->
+<section class="sec" id="loesungen" style="background:var(--s2); border-top:1px solid var(--b1); border-bottom:1px solid var(--b1);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Die Lösung</span>
+      <h2>Roboter, die heute anfangen. Nicht in fünf Jahren.</h2>
+      <p>Wir liefern keine Zukunftsvisionen, sondern Geräte, die seit Jahren im Alltag laufen. Wählen Sie Ihren Bereich.</p>
     </div>
-  </div>
-</section>
-
-<section id="roboter">
-  <div class="section-label">Unsere Roboter</div>
-  <h2>Das passende Modell für jeden Einsatz.</h2>
-  <p class="section-intro">Herstellerunabhängig ausgewählt: Wir integrieren Geräte von Pudu, AutoXing, Gausium, Sparkoz und weiteren Herstellern, je nachdem, was Ihre Umgebung verlangt.</p>
-  <div class="grid-3">
-    <div class="card fade-in">
-      <div class="card-tag">Transport &amp; Logistik</div>
-      <h3>JunoBot-Familie &amp; Mars</h3>
-      <p>Vom Tabletop-Transport bis 600 kg Traglast, mit Hebe- und Liftfunktion.</p>
-      <div class="tags">
-        <a class="tag" href="/junobot-ax6113/">JunoBot AX6113</a>
-        <a class="tag" href="/junobot-lift/">Juno Lift</a>
-        <a class="tag" href="/juno-max/">Juno Max</a>
-        <a class="tag" href="/mars-smartbot/">Mars</a>
+    <div class="sol-wrap">
+      <div class="sol-tabs" id="solTabs">
+        <button class="sol-tab active" data-i="0">
+          <div class="t-top"><span class="t-num">01</span><h3>Transport &amp; Logistik</h3></div>
+          <p>Autonome Transportroboter bewegen Rohstoffe, Bauteile und Fertigware von Station zu Station, bis 600 kg, auf Wunsch per Lift über Etagen.</p>
+          <a class="t-link" href="/roboter-im-lager-und-logistik/">Lösung für Lager &amp; Industrie &rarr;</a>
+        </button>
+        <button class="sol-tab" data-i="1">
+          <div class="t-top"><span class="t-num">02</span><h3>Reinigung &amp; Facility</h3></div>
+          <p>Reinigungsroboter schrubben, saugen und wischen täglich dieselbe Qualität, vom Büro bis zur Industriehalle, dokumentiert per Report.</p>
+          <a class="t-link" href="/reinigungsroboter-kaufen/">Lösung für Reinigung &amp; Facility &rarr;</a>
+        </button>
+        <button class="sol-tab" data-i="2">
+          <div class="t-top"><span class="t-num">03</span><h3>Gastronomie &amp; Hotellerie</h3></div>
+          <p>Servier- und Hotelroboter bringen Speisen, räumen ab und liefern aufs Zimmer. Ihr Team bleibt beim Gast.</p>
+          <a class="t-link" href="/roboter-in-der-gastronomie/">Lösung für Gastro &amp; Hotel &rarr;</a>
+        </button>
+        <button class="sol-tab" data-i="3">
+          <div class="t-top"><span class="t-num">04</span><h3>Gesundheit &amp; Pflege</h3></div>
+          <p>Transport von Wäsche, Material und Mahlzeiten in Kliniken und Pflegeeinrichtungen, damit Pflegekräfte pflegen statt schieben.</p>
+          <a class="t-link" href="/roboter-im-gesundheitsbereich/">Lösung für Gesundheit &amp; Pflege &rarr;</a>
+        </button>
       </div>
-    </div>
-    <div class="card fade-in">
-      <div class="card-tag">Reinigung</div>
-      <h3>Vom Büro bis zur Halle</h3>
-      <p>Kompaktgeräte für 650 m²/h bis zu Industriemaschinen für Logistikflächen.</p>
-      <div class="tags">
-        <a class="tag" href="/tn10-reinigungsroboter/">TN10</a>
-        <a class="tag" href="/j40-reinigungsroboter/">J40</a>
-        <a class="tag" href="/tn70-reinigungsroboter/">TN70 Pro</a>
-        <a class="tag" href="/reinigungsroboter-phantas/">Phantas</a>
-        <a class="tag" href="/reinigungsroboter-scrubber-75/">Scrubber 75</a>
-        <a class="tag" href="/reinigungsroboter-mira/">Mira</a>
-        <a class="tag" href="/nexaro-nr1700/">Nexaro</a>
-      </div>
-    </div>
-    <div class="card fade-in">
-      <div class="card-tag">Service &amp; Gastro</div>
-      <h3>Servieren, abräumen, liefern</h3>
-      <p>Bewährte Servierroboter für Restaurant, Hotel, Event und Empfang.</p>
-      <div class="tags">
-        <a class="tag" href="/bellabot/">BellaBot</a>
-        <a class="tag" href="/kettybot/">KettyBot</a>
-        <a class="tag" href="/holabot/">HolaBot</a>
-        <a class="tag" href="/callisto/">Callisto</a>
-        <a class="tag" href="/junobot-ax6113/">JunoBot</a>
-      </div>
-    </div>
-    <div class="card fade-in">
-      <div class="card-tag">Überwachung</div>
-      <h3>Sicherheit auf vier Beinen</h3>
-      <p>Inspektions- und Überwachungsroboter für Anlagen und sensible Bereiche.</p>
-      <div class="tags">
-        <a class="tag" href="/x30-rhino/">X30 Rhino</a>
-        <a class="tag" href="/puma-m20/">Puma M20</a>
-      </div>
-    </div>
-    <div class="card fade-in">
-      <div class="card-tag">Humanoide</div>
-      <h3>Die nächste Generation</h3>
-      <p>Humanoide Roboter für Empfang, Präsentation und erste produktive Aufgaben.</p>
-      <div class="tags">
-        <a class="tag" href="/atom-max-humanoide/">Dobot Atom</a>
-        <a class="tag" href="/barista-kafferoboter">Barista</a>
-      </div>
-    </div>
-    <div class="card fade-in" style="justify-content:center; align-items:flex-start;">
-      <h3>Alle Modelle im Überblick</h3>
-      <p>Vergleich nach Einsatzbereich, Fläche und Traglast.</p>
-      <a class="card-link" href="/serviceroboter-ubersicht/">Zur Roboterübersicht &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<section class="dark-surface" id="ablauf">
-  <div class="inner">
-    <div class="split">
-      <div>
-        <div class="section-label">So läuft es ab</div>
-        <h2>Von der Anfrage zum laufenden Roboter.</h2>
-        <p class="section-intro">Kein Projekt-Marathon: Zwischen Erstgespräch und produktivem Betrieb liegen in der Regel wenige Wochen.</p>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-label">Schritt 1 · 20 Minuten</div>
-            <h3>Erstgespräch</h3>
-            <p>Wir klären Einsatzbereich, Fläche und Ziel. Sie bekommen eine ehrliche Einschätzung, ob und wo sich ein Roboter bei Ihnen rechnet, inklusive ROI-Kalkulation.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-label">Schritt 2 · vor Ort</div>
-            <h3>Test in Ihrer Umgebung</h3>
-            <p>Der Roboter zeigt im echten Betrieb, was er kann: Ihre Flächen, Ihre Abläufe, Ihr Team.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-label">Schritt 3 · Betrieb</div>
-            <h3>Integration &amp; Betreuung</h3>
-            <p>Installation, Schulung und laufender Support. Mit 60-Tage-Produktivgarantie: Der Roboter arbeitet produktiv, oder wir holen ihn ab.</p>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="highlight-box" style="margin-top:64px;">
-          <h3>Kauf oder Miete</h3>
-          <p>Roboter gibt es bei uns als Kauf mit Service-Paket oder als monatliche Miete (Robotics as a Service). Was sich für Sie rechnet, zeigt das Erstgespräch.</p>
-        </div>
-        <ul class="check-list">
-          <li>Standort-Analyse und Modell-Auswahl herstellerunabhängig</li>
-          <li>Integration in Abläufe, Aufzüge und bestehende Systeme</li>
-          <li>Schulung Ihres Teams vor Ort</li>
-          <li>Service, Wartung und Ersatz aus der Schweiz</li>
-        </ul>
-        <a class="btn-grad" style="margin-top:28px;" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen &rarr;</a>
+      <div class="sol-visual reveal d1" id="solVisual">
+        <div class="sol-panel active"><img src="https://sebotics.com/wp-content/uploads/2023/12/JunoBot-AX-6113-Sebotics-Lieferroboter-Liftanbindung.png" alt="Transportroboter" loading="lazy"><div class="veil"></div><div class="cap"><div class="tag">Transport &amp; Logistik</div><div class="big">Material fährt selbst.</div></div></div>
+        <div class="sol-panel"><img src="https://sebotics.com/wp-content/uploads/2024/12/tn70.png" alt="Reinigungsroboter" loading="lazy"><div class="veil"></div><div class="cap"><div class="tag">Reinigung &amp; Facility</div><div class="big">Saubere Flächen ohne Schichtplan.</div></div></div>
+        <div class="sol-panel"><img src="https://sebotics.com/wp-content/uploads/2022/11/servierroboter-bellabot-e1669060437585.webp" alt="Servierroboter" loading="lazy"><div class="veil"></div><div class="cap"><div class="tag">Gastronomie &amp; Hotellerie</div><div class="big">Das Team bleibt beim Gast.</div></div></div>
+        <div class="sol-panel"><img src="https://sebotics.com/wp-content/uploads/2025/04/callisto-Hotelroboter.png" alt="Healthcare-Roboter" loading="lazy"><div class="veil"></div><div class="cap"><div class="tag">Gesundheit &amp; Pflege</div><div class="big">Mehr Zeit für den Menschen.</div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="referenzen">
-  <div class="section-label">Referenzen</div>
-  <h2>Im Einsatz, wo es zählt.</h2>
-  <p class="section-intro">Vom Luxushotel über die Industriekantine bis zur Bergstation: Unsere Roboter arbeiten dort, wo Anspruch und Frequenz hoch sind.</p>
-  <div class="grid-3">
-    <div class="card fade-in">
-      <div class="card-tag">Hotellerie · Reinigung</div>
-      <h3>The Dolder Grand, Zürich</h3>
-      <p>Autonome Reinigung im Hotel des Jahres 2024. Konstante Qualität auf Flächen, die täglich repräsentativ sein müssen.</p>
+<!-- ROBOTS -->
+<section class="sec" id="roboter">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Unsere Roboter</span>
+      <h2>Das passende Modell für jeden Einsatz.</h2>
+      <p>Herstellerunabhängig ausgewählt: Geräte von Pudu, AutoXing, Gausium, Sparkoz und weiteren, je nachdem, was Ihre Umgebung verlangt.</p>
     </div>
-    <div class="card fade-in">
-      <div class="card-tag">Gastronomie · Service</div>
-      <h3>Stoos Lodge</h3>
-      <p>Servierroboter unterstützen das Team im Restaurant der neuen Lodge, auf 1300 Metern Höhe.</p>
+    <div class="cat-rail">
+      <a class="cat reveal" href="/serviceroboter-ubersicht/#transport"><div class="c-glow"></div><span class="c-num">01</span><h3>Transport &amp; Logistik</h3><p>Vom Tabletop-Transport bis 2.000 kg, mit Hebe- und Liftfunktion.</p><span class="c-go">Ansehen <span class="arrow">&rarr;</span></span></a>
+      <a class="cat reveal d1" href="/serviceroboter-ubersicht/#reinigung"><div class="c-glow"></div><span class="c-num">02</span><h3>Reinigung</h3><p>Kompaktgeräte bis zur Industriemaschine für Logistikflächen.</p><span class="c-go">Ansehen <span class="arrow">&rarr;</span></span></a>
+      <a class="cat reveal d2" href="/serviceroboter-ubersicht/#service"><div class="c-glow"></div><span class="c-num">03</span><h3>Service &amp; Gastro</h3><p>Bewährte Servierroboter für Restaurant, Hotel und Empfang.</p><span class="c-go">Ansehen <span class="arrow">&rarr;</span></span></a>
+      <a class="cat reveal d3" href="/serviceroboter-ubersicht/#ueberwachung"><div class="c-glow"></div><span class="c-num">04</span><h3>Überwachung</h3><p>Inspektions- und Überwachungsroboter für Anlagen.</p><span class="c-go">Ansehen <span class="arrow">&rarr;</span></span></a>
+      <a class="cat reveal d4" href="/serviceroboter-ubersicht/#humanoide"><div class="c-glow"></div><span class="c-num">05</span><h3>Humanoide</h3><p>Die nächste Generation für Empfang und Präsentation.</p><span class="c-go">Ansehen <span class="arrow">&rarr;</span></span></a>
     </div>
-    <div class="card fade-in">
-      <div class="card-tag">Freizeit · Service</div>
-      <h3>Verkehrshaus Luzern</h3>
-      <p>Service-Robotik in der Brasserie des meistbesuchten Museums der Schweiz.</p>
-    </div>
+    <div class="robots-cta reveal"><a class="btn-ghost" href="/serviceroboter-ubersicht/">Alle Modelle im Überblick <span>&rarr;</span></a></div>
   </div>
-  <p style="margin-top:32px;"><a class="card-link" href="/begeisterte-roboterbesitzer/">Alle Referenzen und Geschichten ansehen &rarr;</a></p>
 </section>
 
-<section class="dark-surface" id="ueber-uns">
-  <div class="inner">
-    <div class="split">
-      <div>
-        <div class="section-label">Über SEBOTICS</div>
-        <h2>Integrator, nicht Händler.</h2>
-        <p class="section-intro" style="margin-bottom:24px;">SEBOTICS ist Robotik-Integrator mit Sitz in Horw bei Luzern. Wir verkaufen keine Kartons, wir verantworten funktionierende Abläufe: Analyse, Modell-Auswahl, Integration, Schulung und Service kommen aus einer Hand.</p>
-        <p style="color:var(--t2); font-size:16px;">Seit den ersten Servierroboter-Installationen der Schweiz haben wir unser Portfolio auf Transport, Reinigung, Überwachung und humanoide Robotik erweitert, immer mit demselben Massstab: Das Gerät muss sich im Alltag rechnen.</p>
-        <a class="btn-ghost" style="margin-top:28px;" href="/ueber-uns/">Mehr über uns &rarr;</a>
+<!-- PROCESS -->
+<section class="sec" id="ablauf" style="background:var(--s2); border-top:1px solid var(--b1); border-bottom:1px solid var(--b1);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">So läuft es ab</span>
+      <h2>Von der Anfrage zum laufenden Roboter.</h2>
+      <p>Kein Projekt-Marathon: Zwischen Erstgespräch und produktivem Betrieb liegen in der Regel wenige Wochen.</p>
+    </div>
+    <div class="proc">
+      <div class="step reveal"><div class="knob">1</div><div class="s-when">Schritt 1 · 20 Minuten</div><h3>Erstgespräch</h3><p>Wir klären Einsatzbereich, Fläche und Ziel und sagen Ihnen ehrlich, ob und wo sich ein Roboter rechnet, inklusive ROI-Kalkulation.</p></div>
+      <div class="step reveal d1"><div class="knob">2</div><div class="s-when">Schritt 2 · vor Ort</div><h3>Test in Ihrer Umgebung</h3><p>Der Roboter zeigt im echten Betrieb, was er kann: Ihre Flächen, Ihre Abläufe, Ihr Team.</p></div>
+      <div class="step reveal d2"><div class="knob">3</div><div class="s-when">Schritt 3 · Betrieb</div><h3>Integration &amp; Betreuung</h3><p>Installation, Schulung und laufender Support. Mit 60-Tage-Produktivgarantie: Der Roboter arbeitet produktiv, oder wir holen ihn ab.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section class="sec" id="referenzen">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Referenzen</span>
+      <h2>Im Einsatz, wo es zählt.</h2>
+      <p>Vom Luxushotel über die Industriekantine bis zur Bergstation: Unsere Roboter arbeiten dort, wo Anspruch und Frequenz hoch sind.</p>
+    </div>
+    <div class="bento">
+      <div class="cell reveal"><div class="ic">&#127976;</div><h3>The Dolder Grand, Zürich</h3><p>Autonome Reinigung im Hotel des Jahres 2024. Konstante Qualität auf Flächen, die täglich repräsentativ sein müssen.</p></div>
+      <div class="cell reveal d1"><div class="ic">&#127956;</div><h3>Stoos Lodge</h3><p>Servierroboter unterstützen das Team im Restaurant der neuen Lodge, auf 1.300 Metern Höhe.</p></div>
+      <div class="cell reveal d2"><div class="ic">&#127914;</div><h3>Verkehrshaus Luzern</h3><p>Service-Robotik in der Brasserie des meistbesuchten Museums der Schweiz.</p></div>
+    </div>
+    <div class="robots-cta reveal"><a class="btn-ghost" href="/begeisterte-roboterbesitzer/">Alle Referenzen ansehen <span>&rarr;</span></a></div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="sec" id="kontakt">
+  <div class="wrap">
+    <div class="band reveal">
+      <span class="eyebrow" style="justify-content:center;">Nächster Schritt</span>
+      <h2>Lassen Sie uns 20 Minuten über Ihren Betrieb sprechen.</h2>
+      <p>Ehrliche Einschätzung statt Verkaufsdruck: Wenn sich ein Roboter bei Ihnen nicht rechnet, sagen wir Ihnen das.</p>
+      <a class="btn-primary" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen <span class="arrow">&rarr;</span></a>
+      <div class="contact">Oder direkt: <a href="tel:+41415007552">041 500 75 52</a> &nbsp;·&nbsp; <a href="mailto:info@sebotics.com">info@sebotics.com</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq" style="padding-top:0;">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div class="sec-head reveal" style="margin-bottom:0;">
+        <span class="eyebrow">FAQ</span>
+        <h2>Was Betriebsleiter uns am häufigsten fragen.</h2>
       </div>
-      <div>
-        <ul class="check-list" style="margin-top:48px;">
-          <li>Herstellerunabhängige Auswahl (Pudu, AutoXing, Gausium, Sparkoz u. a.)</li>
-          <li>Schweizer Ansprechpartner für Beratung, Technik und Service</li>
-          <li>Referenzen von der Industrie bis zum 5-Sterne-Hotel</li>
-          <li>Einsatz in der gesamten DACH-Region</li>
-        </ul>
+      <div class="faq-list reveal d1">
+        <div class="faq-item"><button class="faq-q">Was kostet ein Roboter?<span class="pm">+</span></button><div class="faq-a"><p>Je nach Klasse und Einsatz: Kompakte Reinigungs- und Servierroboter starten im unteren fünfstelligen Bereich, Industriegeräte liegen darüber. Im Erstgespräch rechnen wir Ihren Fall konkret durch, inklusive Vergleich zu Ihren heutigen Kosten. Miete statt Kauf ist möglich.</p></div></div>
+        <div class="faq-item"><button class="faq-q">Wann rechnet sich das?<span class="pm">+</span></button><div class="faq-a"><p>Typisch amortisieren sich unsere Lösungen in unter 24 Monaten, kompakte Geräte oft deutlich schneller. Entscheidend sind Fläche bzw. Laufleistung und die Personalkosten, die das Gerät ersetzt oder entlastet.</p></div></div>
+        <div class="faq-item"><button class="faq-q">Wie lange dauert die Einführung?<span class="pm">+</span></button><div class="faq-a"><p>Von der Bestellung bis zum produktiven Betrieb vergehen in der Regel wenige Wochen. Kartierung der Flächen, Einrichtung und Team-Schulung übernehmen wir. Es gilt die 60-Tage-Produktivgarantie.</p></div></div>
+        <div class="faq-item"><button class="faq-q">Was passiert bei Störungen?<span class="pm">+</span></button><div class="faq-a"><p>Support und Wartung kommen von SEBOTICS aus der Schweiz, mit Service-Paket inklusive. Sie haben einen Ansprechpartner, keinen Hersteller-Ticketprozess in Fernost.</p></div></div>
+        <div class="faq-item"><button class="faq-q">Braucht es WLAN oder bauliche Anpassungen?<span class="pm">+</span></button><div class="faq-a"><p>Die Roboter navigieren autonom per Sensorik und Laser, ohne Schienen oder Magnetbänder. Für Reporting und Updates genügt normales WLAN. Liftanbindung ist bei Transportrobotern optional möglich.</p></div></div>
       </div>
     </div>
   </div>
 </section>
-
-<section id="faq">
-  <div class="section-label">FAQ</div>
-  <h2>Was Betriebsleiter uns am häufigsten fragen.</h2>
-  <div style="margin-top:24px;">
-    <details class="faq-item">
-      <summary>Was kostet ein Roboter?</summary>
-      <div class="faq-body">Je nach Klasse und Einsatz: Kompakte Reinigungs- und Servierroboter starten im unteren fünfstelligen Bereich, Industriegeräte liegen darüber. Im Erstgespräch rechnen wir Ihren Fall konkret durch, inklusive Vergleich zu Ihren heutigen Kosten. Miete statt Kauf ist möglich.</div>
-    </details>
-    <details class="faq-item">
-      <summary>Wann rechnet sich das?</summary>
-      <div class="faq-body">Typisch amortisieren sich unsere Lösungen in unter 24 Monaten, kompakte Geräte oft deutlich schneller. Entscheidend sind Fläche bzw. Laufleistung und die Personalkosten, die das Gerät ersetzt oder entlastet.</div>
-    </details>
-    <details class="faq-item">
-      <summary>Wie lange dauert die Einführung?</summary>
-      <div class="faq-body">Von der Bestellung bis zum produktiven Betrieb vergehen in der Regel wenige Wochen. Kartierung der Flächen, Einrichtung und Team-Schulung übernehmen wir. Es gilt die 60-Tage-Produktivgarantie.</div>
-    </details>
-    <details class="faq-item">
-      <summary>Was passiert bei Störungen?</summary>
-      <div class="faq-body">Support und Wartung kommen von SEBOTICS aus der Schweiz, mit Service-Paket inklusive. Sie haben einen Ansprechpartner, keinen Hersteller-Ticketprozess in Fernost.</div>
-    </details>
-    <details class="faq-item">
-      <summary>Braucht es WLAN oder bauliche Anpassungen?</summary>
-      <div class="faq-body">Die Roboter navigieren autonom per Sensorik und Laser, ohne Schienen oder Magnetbänder. Für Reporting und Updates genügt normales WLAN. Liftanbindung ist bei Transportrobotern optional möglich.</div>
-    </details>
-  </div>
-</section>
-
-<section class="final-cta" id="kontakt">
-  <div class="section-label" style="text-align:center;">Nächster Schritt</div>
-  <h2>Lassen Sie uns 20 Minuten darüber sprechen, was in Ihrem Betrieb möglich ist.</h2>
-  <p class="section-intro">Ehrliche Einschätzung statt Verkaufsdruck: Wenn sich ein Roboter bei Ihnen nicht rechnet, sagen wir Ihnen das.</p>
-  <a class="btn-grad" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen &rarr;</a>
-  <div class="contact-line">
-    Oder direkt: <a href="tel:+41415007552">041 500 75 52</a> &nbsp;·&nbsp; <a href="mailto:info@sebotics.com">info@sebotics.com</a>
-  </div>
-</section>
-
-</main>
 
 <footer>
-  <div class="footer-inner">
-    <div>
-      <img src="https://sebotics.com/wp-content/uploads/2021/10/Logo_Sebotics_neu.png" alt="SEBOTICS">
-      <p style="margin-top:14px;">SEBOTICS<br>Bahnhofstrasse 2<br>6048 Horw, Schweiz</p>
-      <p><a href="tel:+41415007552">041 500 75 52</a><br><a href="mailto:info@sebotics.com">info@sebotics.com</a></p>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="https://sebotics.com/wp-content/uploads/2021/10/Logo_Sebotics_neu.png" alt="SEBOTICS">
+        <p>SEBOTICS<br>Bahnhofstrasse 2, 6048 Horw, Schweiz<br><a href="tel:+41415007552">041 500 75 52</a><br><a href="mailto:info@sebotics.com">info@sebotics.com</a></p>
+      </div>
+      <div class="foot-col"><h4>Roboter</h4>
+        <a href="/serviceroboter-ubersicht/">Alle Roboter</a>
+        <a href="/junobot-ax6113/">Transportroboter</a>
+        <a href="/reinigungsroboter-kaufen/">Reinigungsroboter</a>
+        <a href="/bellabot/">Servierroboter</a>
+        <a href="/atom-max-humanoide/">Humanoide</a>
+      </div>
+      <div class="foot-col"><h4>Lösungen</h4>
+        <a href="/roboter-im-lager-und-logistik/">Lager &amp; Logistik</a>
+        <a href="/reinigungsroboter-kaufen/">Reinigung &amp; Facility</a>
+        <a href="/roboter-in-der-gastronomie/">Gastronomie &amp; Hotel</a>
+        <a href="/roboter-im-gesundheitsbereich/">Gesundheit &amp; Pflege</a>
+      </div>
+      <div class="foot-col"><h4>Unternehmen</h4>
+        <a href="/ueber-uns/">Über uns</a>
+        <a href="/begeisterte-roboterbesitzer/">Referenzen</a>
+        <a href="/blog/">Blog</a>
+        <a href="/faq/">FAQ</a>
+      </div>
     </div>
-    <div>
-      <h4>Roboter</h4>
-      <a href="/serviceroboter-ubersicht/">Alle Roboter</a><br>
-      <a href="/junobot-ax6113/">Transportroboter</a><br>
-      <a href="/reinigungsroboter-kaufen/">Reinigungsroboter</a><br>
-      <a href="/bellabot/">Servierroboter</a><br>
-      <a href="/atom-max-humanoide/">Humanoide</a>
+    <div class="foot-bottom">
+      <div><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="/agb/">AGB</a></div>
+      <div>&copy; 2026 SEBOTICS</div>
     </div>
-    <div>
-      <h4>Unternehmen</h4>
-      <a href="/ueber-uns/">Über uns</a><br>
-      <a href="/begeisterte-roboterbesitzer/">Referenzen</a><br>
-      <a href="/blog/">Blog</a><br>
-      <a href="/faq/">FAQ</a><br>
-      <a href="/eventvermietung/">Eventvermietung</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div>
-      <a href="/impressum/">Impressum</a>
-      <a href="/datenschutz/">Datenschutz</a>
-      <a href="/agb/">AGB</a>
-    </div>
-    <div>&copy; 2026 SEBOTICS</div>
   </div>
 </footer>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    // Warum: sanftes Einblenden der Karten beim Scrollen, kein schweres JS-Framework.
-    var fadeEls = document.querySelectorAll('.fade-in');
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+    var nav = document.getElementById('nav');
+    var progress = document.getElementById('progress');
+    var glow = document.getElementById('glow');
+    var orbs = document.querySelectorAll('.orb');
+
+    // Scroll: nav state, progress bar, hero parallax
+    function onScroll() {
+      var y = window.scrollY;
+      nav.classList.toggle('scrolled', y > 30);
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+      if (y < window.innerHeight) {
+        orbs.forEach(function (o) {
+          var p = parseFloat(o.getAttribute('data-par')) || 0.15;
+          o.style.transform = 'translateY(' + (y * p) + 'px)';
+        });
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Cursor glow (desktop pointer only)
+    if (window.matchMedia('(hover: hover)').matches) {
+      window.addEventListener('mousemove', function (e) {
+        glow.style.left = e.clientX + 'px';
+        glow.style.top = e.clientY + 'px';
+      });
+    }
+
+    // Reveal on scroll
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    // Count-up stats
+    var counted = false;
+    var statSec = document.querySelector('.hero-stats');
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting && !counted) {
+          counted = true;
+          document.querySelectorAll('[data-count]').forEach(function (el) {
+            var target = +el.getAttribute('data-count'), start = null;
+            function tick(ts) {
+              if (!start) start = ts;
+              var p = Math.min((ts - start) / 1100, 1);
+              el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target);
+              if (p < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+          });
         }
       });
-    }, { threshold: 0.15 });
-    fadeEls.forEach(function (el) { observer.observe(el); });
+    }, { threshold: 0.5 });
+    if (statSec) cio.observe(statSec);
 
-    // Mobile-Menü schliessen, wenn ein Link gewählt wurde.
-    document.querySelectorAll('#mmenu a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        document.getElementById('mmenu').classList.remove('open');
+    // Solution tabs
+    var tabs = document.querySelectorAll('.sol-tab');
+    var panels = document.querySelectorAll('.sol-panel');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var i = +tab.getAttribute('data-i');
+        tabs.forEach(function (t) { t.classList.remove('active'); });
+        panels.forEach(function (p) { p.classList.remove('active'); });
+        tab.classList.add('active');
+        if (panels[i]) panels[i].classList.add('active');
       });
+      tab.addEventListener('mouseenter', function () {
+        if (window.matchMedia('(hover: hover)').matches) tab.click();
+      });
+    });
+
+    // Marquee: duplicate for seamless loop
+    var mq = document.getElementById('marquee');
+    if (mq) mq.innerHTML += mq.innerHTML;
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(function (item) {
+      var q = item.querySelector('.faq-q'), a = item.querySelector('.faq-a');
+      q.addEventListener('click', function () {
+        var open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function (it) {
+          it.classList.remove('open'); it.querySelector('.faq-a').style.maxHeight = null;
+        });
+        if (!open) { item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+      });
+    });
+
+    // Mobile menu
+    var burger = document.getElementById('burger');
+    burger.addEventListener('click', function () { document.body.classList.toggle('menu-open'); });
+    document.querySelectorAll('#mmenu a').forEach(function (a) {
+      a.addEventListener('click', function () { document.body.classList.remove('menu-open'); });
     });
   });
 </script>
