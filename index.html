@@ -378,7 +378,7 @@
   <div class="grid-overlay" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-badge reveal"><span class="dot"></span> Robotik-Integrator · Schweiz &amp; DACH</div>
-    <h1 class="reveal d1">Ihr Team gehört zu Menschen. <span class="grad-text">Nicht auf den Laufweg.</span></h1>
+    <h1 class="reveal d1">Maschinen übernehmen die Routine. <span class="grad-text">Ihr Team das, was zählt.</span></h1>
     <p class="sub reveal d2">SEBOTICS integriert autonome Roboter für Transport, Reinigung und Service. Beratung, Integration und Support aus einer Hand, von der Standort-Analyse bis zum laufenden Betrieb.</p>
     <div class="hero-ctas reveal d3">
       <a class="btn-primary" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen <span class="arrow">&rarr;</span></a>
@@ -615,13 +615,20 @@
       });
     }
 
-    // Reveal on scroll
+    // Reveal on scroll. Hero content reveals immediately on load (above the fold
+    // darf nicht auf Scroll warten), der Rest per IntersectionObserver.
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
       });
     }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      if (el.closest('.hero')) return;
+      io.observe(el);
+    });
+    requestAnimationFrame(function () {
+      document.querySelectorAll('.hero .reveal').forEach(function (el) { el.classList.add('in'); });
+    });
 
     // Count-up stats
     var counted = false;
