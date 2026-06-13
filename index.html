@@ -208,9 +208,7 @@
     .hero::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.03;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"); }
     .hero .wrap { position: relative; z-index: 2; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px 7px 12px;
-      border: 1px solid var(--b2); border-radius: 100px; font-size: 13px; color: var(--t2); margin-bottom: 30px;
-      background: rgba(8,10,14,0.5); backdrop-filter: blur(6px); }
+    .hero-badge { display: inline-flex; align-items: center; font-size: 16px; font-weight: 500; color: var(--t1); margin-bottom: 30px; }
     .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--acc-lt); box-shadow: 0 0 10px var(--acc-lt); animation: pulse-dot 2s ease-in-out infinite; }
     @keyframes pulse-dot { 0%,100% { box-shadow: 0 0 6px var(--acc-lt); } 50% { box-shadow: 0 0 16px var(--acc-lt), 0 0 28px rgba(122,180,240,0.4); } }
     .hero h1 { font-size: clamp(40px, 7vw, 88px); font-weight: 800; line-height: 1.02; letter-spacing: -0.02em;
@@ -487,7 +485,7 @@
   </div>
   <div class="grid-overlay" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="hero-badge reveal"><span class="dot"></span> Jetzt Mitarbeiter entlasten, ohne auf Qualität zu verzichten.</div>
+    <div class="hero-badge reveal">Jetzt Mitarbeiter entlasten, ohne auf Qualität zu verzichten.</div>
     <h1 class="reveal d1">Maschinen übernehmen die Routine. <span class="grad-text">Ihr Team das, was zählt.</span></h1>
     <p class="sub reveal d2">SEBOTICS integriert autonome Roboter für Transport, Reinigung und Service. Beratung, Integration und Support aus einer Hand, von der Standort-Analyse bis zum laufenden Betrieb.</p>
     <div class="hero-ctas reveal d3">
