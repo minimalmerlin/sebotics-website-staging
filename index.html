@@ -381,10 +381,18 @@
     .reveal.in { opacity: 1; transform: none; }
     .reveal.d1 { transition-delay: 0.08s; } .reveal.d2 { transition-delay: 0.16s; }
     .reveal.d3 { transition-delay: 0.24s; } .reveal.d4 { transition-delay: 0.32s; }
+    /* Hero liegt oberhalb des Folds -> Einblendung rein per CSS, nicht von JS abhaengig.
+       'both' haelt den Endzustand (sichtbar), auch wenn kein .in-Klassenwechsel kommt. */
+    @keyframes heroRise { from { opacity: 0; transform: translateY(34px); } to { opacity: 1; transform: none; } }
+    .hero .reveal { animation: heroRise 0.8s var(--ease) both; }
+    .hero .reveal.d1 { animation-delay: 0.10s; }
+    .hero .reveal.d2 { animation-delay: 0.20s; }
+    .hero .reveal.d3 { animation-delay: 0.30s; }
+    .hero .reveal.d4 { animation-delay: 0.40s; }
 
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
-      .marquee, .scroll-hint .line, .boot-ring .scan, .boot-ring .bp, .hero-badge .dot { animation: none; }
+      .hero .reveal, .marquee, .scroll-hint .line, .boot-ring .scan, .boot-ring .bp, .hero-badge .dot { animation: none; }
       .boot { display: none; }
     }
 
@@ -480,7 +488,7 @@
   <div class="grid-overlay" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-badge reveal"><span class="dot"></span> Jetzt Mitarbeiter entlasten, ohne auf Qualität zu verzichten.</div>
-    <h1 class="reveal d1">Maschinen übernehmen die Routine. <span class="grad-text" id="typewriter"></span></h1>
+    <h1 class="reveal d1">Maschinen übernehmen die Routine. <span class="grad-text">Ihr Team das, was zählt.</span></h1>
     <p class="sub reveal d2">SEBOTICS integriert autonome Roboter für Transport, Reinigung und Service. Beratung, Integration und Support aus einer Hand, von der Standort-Analyse bis zum laufenden Betrieb.</p>
     <div class="hero-ctas reveal d3">
       <a class="btn-primary" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen <span class="arrow">&rarr;</span></a>
