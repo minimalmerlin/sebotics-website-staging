@@ -1,4 +1,10 @@
 {
   "cleanUrls": true,
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/shop/bellabot", "destination": "/bellabot", "permanent": true },
+    { "source": "/reinigungsroboter-scrubber-50", "destination": "/reinigungsroboter-s50pro", "permanent": true },
+    { "source": "/product/junobot-ax6113", "destination": "/junobot-ax6113", "permanent": true },
+    { "source": "/ikitbot-reinigungsroboter", "destination": "/serviceroboter-ubersicht", "permanent": true }
+  ]
 }
