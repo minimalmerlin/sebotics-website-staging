@@ -143,32 +143,88 @@
       .footer-bottom { padding: 20px; }
       .hero-facts { gap: 20px; }
     }
+
+/* === SEBOTICS Mega-Menue + Footer (global, injiziert) === */
+.sbnav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 48px;background:rgba(0,0,0,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--b1);}
+.sbnav .sb-logo img{height:22px;filter:brightness(0) invert(1);display:block;}
+.sbnav-links{display:flex;gap:4px;list-style:none;align-items:center;margin:0;padding:0;}
+.sbnav-links>li{position:relative;}
+.sbnav-links>li>a,.sbnav-links>li>button{font-family:var(--font);font-size:13px;font-weight:500;color:var(--t2);background:none;border:none;cursor:pointer;text-decoration:none;text-transform:uppercase;letter-spacing:2px;padding:10px 14px;border-radius:20px;display:inline-flex;align-items:center;gap:6px;transition:color .25s;}
+.sbnav-links>li>a:hover,.sbnav-links>li>button:hover,.sbnav-links>li.open>button{color:var(--t1);}
+.sbnav-links .caret{width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-top:-3px;transition:transform .25s;}
+.sbnav-links>li.open .caret{transform:rotate(-135deg);margin-top:2px;}
+.sbnav-right{display:flex;align-items:center;gap:12px;}
+.sbnav-cta{display:inline-flex;align-items:center;padding:9px 18px;background:var(--grad);color:#fff;font-weight:600;font-size:13.5px;border-radius:8px;text-decoration:none;white-space:nowrap;}
+.sbnav-cta:hover{opacity:.9;}
+.sbburger{display:none;background:none;border:1px solid var(--b2);border-radius:8px;color:var(--t1);font-size:20px;line-height:1;padding:6px 11px;cursor:pointer;}
+/* Panel */
+.sbpanel{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(8px);min-width:560px;background:#0b0b0b;border:1px solid var(--b2);border-radius:14px;padding:22px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s;box-shadow:0 24px 60px rgba(0,0,0,.55);}
+.sbpanel.wide{min-width:860px;}
+.sbnav-links>li.open .sbpanel{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.sbpanel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px 26px;}
+.sbpanel h4{grid-column:1/-1;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--acc-lt);margin:6px 0 4px;}
+.sbcol{display:flex;flex-direction:column;}
+.sbcol .sbcat{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--acc-lt);margin:8px 0 6px;text-decoration:none;display:block;}
+.sbcol .sbcat:hover{color:var(--t1);}
+.sbpanel a.sbitem{display:block;padding:6px 8px;border-radius:7px;font-size:14px;color:var(--t2);text-decoration:none;transition:background .2s,color .2s;}
+.sbpanel a.sbitem:hover{background:rgba(255,255,255,.05);color:var(--t1);}
+.sbpanel .sball{grid-column:1/-1;margin-top:12px;padding-top:12px;border-top:1px solid var(--b1);}
+.sbpanel .sball a{font-size:13px;font-weight:600;color:var(--acc-lt);text-decoration:none;}
+/* Mobile */
+.sbmenu{display:none;position:fixed;top:58px;left:0;right:0;bottom:0;z-index:199;background:rgba(0,0,0,.98);overflow-y:auto;padding:14px 20px 40px;}
+.sbmenu.open{display:block;}
+.sbmenu details{border-bottom:1px solid var(--b1);}
+.sbmenu summary{list-style:none;cursor:pointer;padding:15px 4px;font-size:16px;font-weight:600;color:var(--t1);display:flex;justify-content:space-between;}
+.sbmenu summary::-webkit-details-marker{display:none;}
+.sbmenu summary::after{content:'+';color:var(--acc-lt);font-weight:700;}
+.sbmenu details[open] summary::after{content:'\2212';}
+.sbmenu .sbsub a{display:block;padding:9px 4px 9px 16px;color:var(--t2);text-decoration:none;font-size:15px;}
+.sbmenu>a{display:block;padding:15px 4px;font-size:16px;font-weight:600;color:var(--t1);text-decoration:none;border-bottom:1px solid var(--b1);}
+.sbmenu .sbmenu-cta{margin-top:18px;text-align:center;background:var(--grad);border-radius:8px;border:none;}
+/* Globaler Footer */
+.sbfoot{border-top:1px solid var(--b1);margin-top:60px;background:var(--s2);}
+.sbfoot .sbfoot-in{max-width:var(--max-w);margin:0 auto;padding:54px 60px 28px;}
+.sbfoot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px;}
+.sbfoot-brand img{height:26px;filter:brightness(0) invert(1);margin-bottom:14px;}
+.sbfoot-brand p{font-size:14px;color:var(--t3);line-height:1.7;}
+.sbfoot-brand a{color:var(--t2);text-decoration:none;}
+.sbfoot-col h4{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--t1);margin-bottom:14px;}
+.sbfoot-col a{display:block;font-size:14px;color:var(--t3);text-decoration:none;padding:5px 0;}
+.sbfoot-col a:hover{color:var(--t1);}
+.sbfoot-bottom{max-width:var(--max-w);margin:0 auto;padding:18px 60px;border-top:1px solid var(--b1);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--t3);}
+.sbfoot-bottom a{color:var(--t3);text-decoration:none;margin-right:16px;}
+.sbfoot-bottom a:hover{color:var(--t1);}
+@media (max-width:1024px){.sbfoot-top{grid-template-columns:1fr 1fr;}}
+@media (max-width:980px){.sbnav-links{display:none;}.sbburger{display:block;}.sbnav{padding:12px 18px;}}
+@media (max-width:768px){.sbfoot .sbfoot-in{padding:40px 22px 22px;}.sbfoot-top{grid-template-columns:1fr;gap:22px;}.sbfoot-bottom{padding:18px 22px;}}
+
 </style>
 </head>
 <body>
 
-<nav class="top-nav">
-  <a class="logo" href="/" aria-label="SEBOTICS Startseite">
-    <img src="https://sebotics.com/wp-content/uploads/2021/10/Logo_Sebotics_neu.png" alt="SEBOTICS">
-  </a>
-  <ul class="nav-links">
-    <li><a href="/serviceroboter-ubersicht/">Roboter</a></li>
-    <li><a href="/#loesungen">Lösungen</a></li>
-    <li><a href="/#referenzen">Referenzen</a></li>
+<nav class="sbnav" id="sbnav" aria-label="Hauptnavigation">
+  <a class="sb-logo" href="/" aria-label="SEBOTICS Startseite"><img src="https://sebotics.com/wp-content/uploads/2021/10/Logo_Sebotics_neu.png" alt="SEBOTICS"></a>
+  <ul class="sbnav-links">
+    <li data-mega><button aria-haspopup="true" aria-expanded="false">Roboter <span class="caret"></span></button><div class="sbpanel wide" role="menu"><div class="sbpanel-grid"><div class="sbcol"><a class="sbcat" href="/serviceroboter-ubersicht/#transport">Transport & Logistik</a><a class="sbitem" href="/junobot-ax6113/">JunoBot AX6113</a><a class="sbitem" href="/junobot-lift/">Juno Lift</a><a class="sbitem" href="/junobot-lift-heavy/">Juno Lift Heavy</a><a class="sbitem" href="/juno-plus/">Juno Plus</a><a class="sbitem" href="/juno-max/">Juno Max</a><a class="sbitem" href="/juno-base/">Juno Base</a><a class="sbitem" href="/vesta-ax6112/">Vesta AX6112</a><a class="sbitem" href="/f2000/">Pollux F2000</a><a class="sbitem" href="/mars-smartbot/">Mars</a><a class="sbitem" href="/t300/">T300</a></div><div class="sbcol"><a class="sbcat" href="/serviceroboter-ubersicht/#reinigung">Reinigung & Hygiene</a><a class="sbitem" href="/tn10-reinigungsroboter/">TN10 Pro</a><a class="sbitem" href="/tn70-reinigungsroboter/">TN70 Pro</a><a class="sbitem" href="/j40-reinigungsroboter/">J40</a><a class="sbitem" href="/reinigungsroboter-j30/">J30</a><a class="sbitem" href="/reinigungsroboter-phantas/">Phantas</a><a class="sbitem" href="/reinigungsroboter-marvel/">Marvel</a><a class="sbitem" href="/reinigungsroboter-omnie/">Omnie</a><a class="sbitem" href="/reinigungsroboter-mira/">Mira</a><a class="sbitem" href="/reinigungsroboter-scrubber-75/">Scrubber 75</a><a class="sbitem" href="/reinigungsroboter-s50pro/">Scrubber 50</a><a class="sbitem" href="/reinigungsroboter-v40pro/">Vacuum 40</a><a class="sbitem" href="/reinigungsroboter-s111/">Sweeper 111</a><a class="sbitem" href="/cc1-reinigungsroboter/">CC1</a><a class="sbitem" href="/pudu-mt1/">MT1</a><a class="sbitem" href="/zaco-x1000/">Zaco X1000</a><a class="sbitem" href="/artist-1/">Artist 1</a><a class="sbitem" href="/cleanfix-toro-cas-reinigung-scheuersaugmaschine/">Toro CAS</a><a class="sbitem" href="/puductor-2/">Puductor 2</a><a class="sbitem" href="/nexaro-nr1700/">Nexaro NR 1700</a></div><div class="sbcol"><a class="sbcat" href="/serviceroboter-ubersicht/#service">Service & Gastro</a><a class="sbitem" href="/bellabot/">BellaBot</a><a class="sbitem" href="/kettybot/">KettyBot</a><a class="sbitem" href="/holabot/">HolaBot</a><a class="sbitem" href="/cadebot/">Cadebot</a><a class="sbitem" href="/callisto/">Callisto</a><a class="sbitem" href="/swiftbot/">SwiftBot</a><a class="sbitem" href="/pudubot-2/">Pudubot 2</a><a class="sbitem" href="/flashbot/">FlashBot</a></div><div class="sbcol"><a class="sbcat" href="/serviceroboter-ubersicht/#ueberwachung">Überwachung & Inspektion</a><a class="sbitem" href="/x30-rhino/">X30 Rhino</a><a class="sbitem" href="/puma-m20/">Puma M20</a></div><div class="sbcol"><a class="sbcat" href="/serviceroboter-ubersicht/#humanoide">Humanoide</a><a class="sbitem" href="/atom-max-humanoide/">Dobot Atom</a><a class="sbitem" href="/barista-kafferoboter/">Barista Roboter</a></div></div><div class="sball"><a href="/serviceroboter-ubersicht/">Alle Roboter ansehen &rarr;</a></div></div></li>
+    <li data-mega><button aria-haspopup="true" aria-expanded="false">Branchen <span class="caret"></span></button><div class="sbpanel"><div class="sbpanel-grid"><a class="sbitem" href="/roboter-in-der-gastronomie/">Gastronomie</a><a class="sbitem" href="/roboter-im-hotel/">Hotel</a><a class="sbitem" href="/roboter-im-catering/">Catering</a><a class="sbitem" href="/roboter-im-gesundheitsbereich/">Gesundheit & Pflege</a><a class="sbitem" href="/roboter-im-lager-und-logistik/">Lager & Logistik</a><a class="sbitem" href="/roboter-auf-der-messe/">Messe & Event</a><a class="sbitem" href="/roboter-in-garagen-und-autohaeusern/">Garagen & Autohäuser</a><a class="sbitem" href="/roboter-im-lager-und-buero/">Lager & Büro</a><a class="sbitem" href="/eventvermietung/">Eventvermietung</a></div></div></li>
+    <li><a href="/reinigungsroboter-kalkulator/">Wirtschaftlichkeit</a></li>
+    <li><a href="/begeisterte-roboterbesitzer/">Referenzen</a></li>
+    <li data-mega><button aria-haspopup="true" aria-expanded="false">Wissen <span class="caret"></span></button><div class="sbpanel"><div class="sbpanel-grid"><a class="sbitem" href="/blog/">Blog</a><a class="sbitem" href="/roboter-news/">Roboter-News</a><a class="sbitem" href="/faq/">FAQ</a><a class="sbitem" href="/begeisterte-roboterbesitzer/">Referenzen</a><a class="sbitem" href="/kostenfreier-serviceroboter-konfigurator/">Roboter-Konfigurator</a><a class="sbitem" href="/reinigungsroboter-kalkulator/">Reinigungs-Kalkulator</a></div></div></li>
     <li><a href="/ueber-uns/">Über uns</a></li>
-    <li><a href="/blog/">Blog</a></li>
   </ul>
-  <div style="display:flex; align-items:center; gap:12px;">
-    <a class="nav-cta" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen</a>
-    <button class="burger" aria-label="Menü öffnen" onclick="document.getElementById('mmenu').classList.toggle('open')">&#9776;</button>
+  <div class="sbnav-right">
+    <a class="sbnav-cta" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen</a>
+    <button class="sbburger" id="sbburger" aria-label="Menü öffnen" aria-expanded="false">&#9776;</button>
   </div>
 </nav>
-<div class="mobile-menu" id="mmenu">
-  <a href="/serviceroboter-ubersicht/">Roboter</a>
-  <a href="/#loesungen">Lösungen</a>
-  <a href="/#referenzen">Referenzen</a>
+
+<div class="sbmenu" id="sbmenu">
+  <details><summary>Roboter</summary><div class="sbsub"><a href="/serviceroboter-ubersicht/">Alle Roboter</a><a href="/junobot-ax6113/">JunoBot AX6113</a><a href="/junobot-lift/">Juno Lift</a><a href="/junobot-lift-heavy/">Juno Lift Heavy</a><a href="/juno-plus/">Juno Plus</a><a href="/juno-max/">Juno Max</a><a href="/juno-base/">Juno Base</a><a href="/vesta-ax6112/">Vesta AX6112</a><a href="/f2000/">Pollux F2000</a><a href="/mars-smartbot/">Mars</a><a href="/t300/">T300</a><a href="/tn10-reinigungsroboter/">TN10 Pro</a><a href="/tn70-reinigungsroboter/">TN70 Pro</a><a href="/j40-reinigungsroboter/">J40</a><a href="/reinigungsroboter-j30/">J30</a><a href="/reinigungsroboter-phantas/">Phantas</a><a href="/reinigungsroboter-marvel/">Marvel</a><a href="/reinigungsroboter-omnie/">Omnie</a><a href="/reinigungsroboter-mira/">Mira</a><a href="/reinigungsroboter-scrubber-75/">Scrubber 75</a><a href="/reinigungsroboter-s50pro/">Scrubber 50</a><a href="/reinigungsroboter-v40pro/">Vacuum 40</a><a href="/reinigungsroboter-s111/">Sweeper 111</a><a href="/cc1-reinigungsroboter/">CC1</a><a href="/pudu-mt1/">MT1</a><a href="/zaco-x1000/">Zaco X1000</a><a href="/artist-1/">Artist 1</a><a href="/cleanfix-toro-cas-reinigung-scheuersaugmaschine/">Toro CAS</a><a href="/puductor-2/">Puductor 2</a><a href="/nexaro-nr1700/">Nexaro NR 1700</a><a href="/bellabot/">BellaBot</a><a href="/kettybot/">KettyBot</a><a href="/holabot/">HolaBot</a><a href="/cadebot/">Cadebot</a><a href="/callisto/">Callisto</a><a href="/swiftbot/">SwiftBot</a><a href="/pudubot-2/">Pudubot 2</a><a href="/flashbot/">FlashBot</a><a href="/x30-rhino/">X30 Rhino</a><a href="/puma-m20/">Puma M20</a><a href="/atom-max-humanoide/">Dobot Atom</a><a href="/barista-kafferoboter/">Barista Roboter</a></div></details>
+  <details><summary>Branchen</summary><div class="sbsub"><a href="/roboter-in-der-gastronomie/">Gastronomie</a><a href="/roboter-im-hotel/">Hotel</a><a href="/roboter-im-catering/">Catering</a><a href="/roboter-im-gesundheitsbereich/">Gesundheit & Pflege</a><a href="/roboter-im-lager-und-logistik/">Lager & Logistik</a><a href="/roboter-auf-der-messe/">Messe & Event</a><a href="/roboter-in-garagen-und-autohaeusern/">Garagen & Autohäuser</a><a href="/roboter-im-lager-und-buero/">Lager & Büro</a><a href="/eventvermietung/">Eventvermietung</a></div></details>
+  <details><summary>Wissen</summary><div class="sbsub"><a href="/blog/">Blog</a><a href="/roboter-news/">Roboter-News</a><a href="/faq/">FAQ</a><a href="/begeisterte-roboterbesitzer/">Referenzen</a><a href="/kostenfreier-serviceroboter-konfigurator/">Roboter-Konfigurator</a><a href="/reinigungsroboter-kalkulator/">Reinigungs-Kalkulator</a></div></details>
+  <a href="/begeisterte-roboterbesitzer/">Referenzen</a>
   <a href="/ueber-uns/">Über uns</a>
-  <a href="/blog/">Blog</a>
+  <a class="sbnav-cta sbmenu-cta" href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen</a>
 </div>
 
 <header class="product-hero">
@@ -272,14 +328,41 @@
 
 </main>
 
-<footer>
-  <div class="footer-bottom">
-    <div>
-      <a href="/impressum/">Impressum</a>
-      <a href="/datenschutz/">Datenschutz</a>
-      <a href="/agb/">AGB</a>
+<footer class="sbfoot">
+  <div class="sbfoot-in">
+    <div class="sbfoot-top">
+      <div class="sbfoot-brand">
+        <img src="https://sebotics.com/wp-content/uploads/2021/10/Logo_Sebotics_neu.png" alt="SEBOTICS">
+        <p>SEBOTICS<br>Bahnhofstrasse 2, 6048 Horw, Schweiz<br>
+        <a href="tel:+41415007552">041 500 75 52</a><br>
+        <a href="mailto:info@sebotics.com">info@sebotics.com</a></p>
+      </div>
+      <div class="sbfoot-col"><h4>Roboter</h4>
+        <a href="/serviceroboter-ubersicht/">Alle Roboter</a>
+        <a href="/serviceroboter-ubersicht/#transport">Transport &amp; Logistik</a>
+        <a href="/serviceroboter-ubersicht/#reinigung">Reinigung &amp; Hygiene</a>
+        <a href="/serviceroboter-ubersicht/#service">Service &amp; Gastro</a>
+        <a href="/serviceroboter-ubersicht/#humanoide">Humanoide</a>
+      </div>
+      <div class="sbfoot-col"><h4>Branchen</h4>
+        <a href="/roboter-in-der-gastronomie/">Gastronomie</a>
+        <a href="/roboter-im-hotel/">Hotel</a>
+        <a href="/roboter-im-gesundheitsbereich/">Gesundheit &amp; Pflege</a>
+        <a href="/roboter-im-lager-und-logistik/">Lager &amp; Logistik</a>
+        <a href="/eventvermietung/">Eventvermietung</a>
+      </div>
+      <div class="sbfoot-col"><h4>Unternehmen</h4>
+        <a href="/ueber-uns/">Über uns</a>
+        <a href="/begeisterte-roboterbesitzer/">Referenzen</a>
+        <a href="/blog/">Blog</a>
+        <a href="/faq/">FAQ</a>
+        <a href="https://meetings-eu1.hubspot.com/merlin-mechler1/qualifizierungsgesprach-roundrobin">Erstgespräch buchen</a>
+      </div>
     </div>
-    <div>&copy; 2026 SEBOTICS · Bahnhofstrasse 2, 6048 Horw · <a href="tel:+41415007552">041 500 75 52</a></div>
+  </div>
+  <div class="sbfoot-bottom">
+    <div><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="/agb/">AGB</a></div>
+    <div>&copy; 2026 SEBOTICS &middot; Bahnhofstrasse 2, 6048 Horw</div>
   </div>
 </footer>
 
@@ -291,6 +374,30 @@
       });
     });
   });
+</script>
+
+
+<script>
+/* Mega-Menue: Hover (Desktop) + Klick/Touch + Tastatur, Burger (Mobile). */
+(function(){
+  var nav=document.getElementById('sbnav'); if(!nav) return;
+  var items=nav.querySelectorAll('li[data-mega]');
+  var FINE=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  function closeAll(except){items.forEach(function(li){if(li!==except){li.classList.remove('open');var b=li.querySelector('button');if(b)b.setAttribute('aria-expanded','false');}});}
+  items.forEach(function(li){
+    var btn=li.querySelector('button');
+    btn.addEventListener('click',function(e){e.stopPropagation();var open=li.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');closeAll(li);});
+    if(FINE){
+      li.addEventListener('mouseenter',function(){closeAll(li);li.classList.add('open');btn.setAttribute('aria-expanded','true');});
+      li.addEventListener('mouseleave',function(){li.classList.remove('open');btn.setAttribute('aria-expanded','false');});
+    }
+  });
+  document.addEventListener('click',function(){closeAll(null);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll(null);});
+  var burger=document.getElementById('sbburger'),menu=document.getElementById('sbmenu');
+  if(burger&&menu){burger.addEventListener('click',function(){var o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o?'true':'false');document.body.style.overflow=o?'hidden':'';});
+    menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');document.body.style.overflow='';});});}
+})();
 </script>
 
 </body>
