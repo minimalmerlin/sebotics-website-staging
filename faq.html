@@ -525,6 +525,9 @@
 .sbburger{display:none;background:none;border:1px solid var(--b2);border-radius:8px;color:var(--t1);font-size:20px;line-height:1;padding:6px 11px;cursor:pointer;}
 /* Panel */
 .sbpanel{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(8px);min-width:560px;background:#0b0b0b;border:1px solid var(--b2);border-radius:14px;padding:22px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s;box-shadow:0 24px 60px rgba(0,0,0,.55);}
+.sbnav-links>li[data-mega]::after{content:'';position:absolute;left:0;right:0;top:100%;height:18px;display:none;}
+.sbnav-links>li[data-mega].open::after{display:block;}
+.sbpanel::before{content:'';position:absolute;left:-20px;right:-20px;top:-20px;height:22px;}
 .sbpanel.wide{min-width:860px;}
 .sbnav-links>li.open .sbpanel{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
 .sbpanel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px 26px;}
