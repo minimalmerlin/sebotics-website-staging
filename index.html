@@ -200,7 +200,17 @@
     .hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
       padding: 120px 0 80px; overflow: hidden; }
     .hero-bg { position: absolute; inset: 0; z-index: 0; }
-    #radar { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.92; }
+    /* Roboter-Foto als Hero-Hintergrund. Warum: echtes Einsatz-Feeling hinter der Sensor-Optik. */
+    .hero-photo { position: absolute; inset: 0; z-index: 0;
+      background-color: #06070a; background-image: url("/hero-robots.webp");
+      background-position: 72% center; background-size: cover; background-repeat: no-repeat; }
+    /* Dunkler Scrim: links und unten am dunkelsten, damit weisser Text immer lesbar bleibt. */
+    .hero-photo::after { content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(100deg, rgba(4,5,8,0.96) 0%, rgba(4,5,8,0.88) 26%, rgba(4,5,8,0.58) 56%, rgba(4,5,8,0.50) 100%),
+        linear-gradient(to bottom, rgba(4,5,8,0.55) 0%, rgba(4,5,8,0.12) 34%, rgba(4,5,8,0.85) 100%),
+        radial-gradient(ellipse 58% 52% at 80% 30%, rgba(44,109,177,0.22), transparent 60%); }
+    #radar { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.55; z-index: 1; mix-blend-mode: screen; }
     .grid-overlay { position: absolute; inset: 0; z-index: 1; opacity: 0.4;
       background-image: linear-gradient(var(--b1) 1px, transparent 1px), linear-gradient(90deg, var(--b1) 1px, transparent 1px);
       background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 75% 70% at 60% 40%, #000 20%, transparent 72%);
@@ -347,6 +357,33 @@
     .band p { font-size: 18px; color: var(--t2); max-width: 50ch; margin: 0 auto 36px; }
     .band .contact { margin-top: 30px; color: var(--t3); font-size: 15px; }
     .band .contact a { color: var(--acc-lt); text-decoration: none; font-weight: 600; }
+
+    /* ============ FOTO-BAND (Szene) ============ */
+    /* Warum: full-bleed Einsatz-Foto als emotionaler Beat, dunkler Verlauf haelt Text lesbar. */
+    .scene { position: relative; width: 100%; min-height: clamp(300px, 42vw, 540px);
+      display: flex; align-items: flex-end; overflow: hidden;
+      border-top: 1px solid var(--b1); border-bottom: 1px solid var(--b1);
+      background-color: #06070a; background-position: center; background-size: cover; background-repeat: no-repeat; }
+    .scene::after { content: ''; position: absolute; inset: 0; z-index: 0;
+      background:
+        linear-gradient(to top, rgba(4,5,8,0.92) 0%, rgba(4,5,8,0.35) 46%, rgba(4,5,8,0.5) 100%),
+        linear-gradient(100deg, rgba(4,5,8,0.72) 0%, rgba(4,5,8,0.12) 58%, transparent 100%); }
+    .scene .wrap { position: relative; z-index: 1; width: 100%; padding-top: 56px; padding-bottom: 50px; }
+    .scene h2 { font-size: clamp(26px, 3.6vw, 46px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; max-width: 22ch; margin-top: 14px; }
+    .scene .frame { position: absolute; inset: 16px; z-index: 1; pointer-events: none; border: 1px solid rgba(255,255,255,0.10); }
+    .scene .frame::before, .scene .frame::after { content: ''; position: absolute; width: 16px; height: 16px; border: 2px solid var(--acc-lt); opacity: 0.85; }
+    .scene .frame::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+    .scene .frame::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+
+    /* ============ REFERENZ-SHOTS (Bildpaar) ============ */
+    .shots { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 44px; }
+    .shot { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--b2); aspect-ratio: 16 / 10; }
+    .shot img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+    .shot::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(4,5,8,0.62), transparent 52%); }
+    .shot:hover img { transform: scale(1.05); }
+    .shot .cap { position: absolute; left: 18px; bottom: 15px; z-index: 1; font-size: 14px; font-weight: 600; color: var(--t1); }
+    .shot .cap small { display: block; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--acc-lt); margin-bottom: 5px; }
+    @media (max-width: 640px) { .shots { grid-template-columns: 1fr; } }
 
     /* ============ FAQ ============ */
     .faq-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
@@ -544,6 +581,7 @@
 <!-- HERO -->
 <header class="hero">
   <div class="hero-bg" aria-hidden="true">
+    <div class="hero-photo"></div>
     <canvas id="radar"></canvas>
   </div>
   <div class="grid-overlay" aria-hidden="true"></div>
@@ -689,6 +727,10 @@
       <h2>Das passende Modell für jeden Einsatz.</h2>
       <p>Herstellerunabhängig ausgewählt: Geräte von Pudu, AutoXing, Gausium, Sparkoz und weiteren, je nachdem, was Ihre Umgebung verlangt.</p>
     </div>
+    <div class="shots reveal">
+      <div class="shot"><img src="/shot-halle.webp" alt="Reinigungs-, Transport- und Serviceroboter in einer Halle" loading="lazy"><div class="cap"><small>Reinigung · Logistik · Service</small>Mehrere Systeme, ein Betrieb</div></div>
+      <div class="shot"><img src="/shot-lobby.webp" alt="Reinigungs- und Serviceroboter im Empfangsbereich" loading="lazy"><div class="cap"><small>Reinigung · Service</small>Vom Empfang bis zur Fläche</div></div>
+    </div>
     <div class="cat-rail">
       <a class="cat reveal" href="/serviceroboter-ubersicht/#transport"><span class="det"><i>UNIT · 01</i></span><div class="c-glow"></div><span class="c-num">01</span><h3>Transport &amp; Logistik</h3><p>Vom Tabletop-Transport bis 2.000 kg, mit Hebe- und Liftfunktion.</p><span class="c-go">Ansehen <span class="arrow">&rarr;</span></span></a>
       <a class="cat reveal d1" href="/serviceroboter-ubersicht/#reinigung"><span class="det"><i>UNIT · 02</i></span><div class="c-glow"></div><span class="c-num">02</span><h3>Reinigung</h3><p>Kompaktgeräte bis zur Industriemaschine für Logistikflächen.</p><span class="c-go">Ansehen <span class="arrow">&rarr;</span></span></a>
@@ -740,6 +782,15 @@
       <div class="cell reveal d2"><span class="det"><i>SITE · LU</i></span><div class="ic">&#127914;</div><h3>Verkehrshaus Luzern</h3><p>Service-Robotik in der Brasserie des meistbesuchten Museums der Schweiz.</p></div>
     </div>
     <div class="robots-cta reveal"><a class="btn-ghost" href="/begeisterte-roboterbesitzer/">Alle Referenzen ansehen <span>&rarr;</span></a></div>
+  </div>
+</section>
+
+<!-- FOTO-BAND -->
+<section class="scene" data-spine="Im Einsatz" aria-label="Roboter im Einsatz" style="background-image:url('/scene-clean.webp')">
+  <div class="frame" aria-hidden="true"></div>
+  <div class="wrap reveal">
+    <span class="eyebrow">Im Einsatz</span>
+    <h2>Vom Lager bis zur Klinik, autonom unterwegs.</h2>
   </div>
 </section>
 
